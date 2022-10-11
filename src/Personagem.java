@@ -4,6 +4,10 @@ public class Personagem {
     // precisa ter um gamecontroller, que é o q vai ser chamado para iniciar o jogo
     // cada personagem (arqueiro, mago etc) vai precisar de uma classe q vai ser ligada a essa classe personagem
 
-    private int id;
-    private String nome;
+    public void atacar(int atacar) { }
+
+    public void danoSofrido(int atacar, int defesa){
+
+    }
+
 }
