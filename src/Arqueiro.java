@@ -11,7 +11,6 @@ public class Arqueiro extends Personagem{
         super(20, 30, 160);
     }
 
-    @Override
     public void escolherArma() {
         Scanner inputArma = new Scanner(System.in);
         boolean opcaoInvalida;
@@ -23,7 +22,7 @@ public class Arqueiro extends Personagem{
             if (armaEscolhida == 1) {
                 arma = new Arma(12, 13, "Arco Longo");
                 System.out.println("\n" +
-                        "        4$$-.\n" +
+                        "             4$$-.\n" +
                         "             4   \".\n" +
                         "             4    ^.\n" +
                         "             4     $\n" +
@@ -40,7 +39,7 @@ public class Arqueiro extends Personagem{
                         "             4      F\n" +
                         "             4     @\n" +
                         "             4    .\n" +
-                        "             J.\n" +
+                        "             4.\n" +
                         "            '$$          '");
             }
             else if (armaEscolhida == 2) {

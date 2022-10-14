@@ -8,7 +8,6 @@ public class Guerreiro extends Personagem {
         super(30,20,180);
     }
 
-    @Override
     public void escolherArma() {
         Scanner inputArma = new Scanner(System.in);
         boolean opcaoInvalida;

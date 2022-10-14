@@ -7,7 +7,6 @@ public class Mago extends Personagem{
         super(20, 10, 200);
     }
 
-    @Override
     public void escolherArma() {
         Scanner inputArma = new Scanner(System.in);
         boolean opcaoInvalida;
