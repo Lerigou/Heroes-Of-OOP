@@ -41,6 +41,7 @@ public class MenusController {
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
         int qtdMax = 3;
+        personagens.add(new Dragao());
 
         do {
             adicionarPersonagem = true;
@@ -211,10 +212,50 @@ public class MenusController {
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(10, 15, "Espada");
-                    System.out.println("aaaaaa");
+                    System.out.println("\n" +
+                            "                   {}\n" +
+                            "                  .--.\n" +
+                            "                 /.--.\\\n" +
+                            "                 |====|\n" +
+                            "                 |`::`|\n" +
+                            "             .-;`\\..../`;_.-^-._\n" +
+                            "      /\\\\   /  |...::..|`   :   `|\n" +
+                            "      |:'\\ |   /'''::''|   .:.   |\n" +
+                            "     @|\\ /\\;-,/\\   ::  |..:::::..|\n" +
+                            "     `||\\ <` >  >._::_.| ':::::' |\n" +
+                            "      || `\"\"`  /   ^^  |   ':'   |\n" +
+                            "      ||       |       \\    :    /\n" +
+                            "      ||       |        \\   :   / \n" +
+                            "      ||       |___/\\___|`-.:.-`\n" +
+                            "      ||        \\_ || _/    `\n" +
+                            "      ||        <_ >< _>\n" +
+                            "      ||        |  ||  |\n" +
+                            "      ||        |  ||  |\n" +
+                            "      ||       _\\.:||:./_\n" +
+                            "      \\/      /____/\\____\\");
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(17, 8, "Machado");
-                    System.out.println("aaaaa");
+                    System.out.println("\n" +
+                            "   ,   A           {}\n" +
+                            "  / \\, | ,        .--.\n" +
+                            " |    =|= >      /.--.\\\n" +
+                            "  \\ /` | `       |====|\n" +
+                            "   `   |         |`::`|  \n" +
+                            "       |     .-;`\\..../`;_.-^-._\n" +
+                            "      /\\\\/  /  |...::..|`   :   `|\n" +
+                            "      |:'\\ |   /'''::''|   .:.   |\n" +
+                            "       \\ /\\;-,/\\   ::  |..:::::..|\n" +
+                            "       |\\ <` >  >._::_.| ':::::' |\n" +
+                            "       | `\"\"`  /   ^^  |   ':'   |\n" +
+                            "       |       |       \\    :    /\n" +
+                            "       |       |        \\   :   / \n" +
+                            "       |       |___/\\___|`-.:.-`\n" +
+                            "       |        \\_ || _/    `\n" +
+                            "       |        <_ >< _>\n" +
+                            "       |        |  ||  |\n" +
+                            "       |        |  ||  |\n" +
+                            "       |       _\\.:||:./_\n" +
+                            "       |      /____/\\____\\");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -249,7 +290,28 @@ public class MenusController {
                             "  .   *    *  ");
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(13, 12, "Cajado");
-                    System.out.println("aaaaa");
+                    System.out.println("\n" +
+                                    "                   _\n" +
+                                    "        _..._    /` `\\    _..._\n" +
+                                    "      .'     '. |     | .'     '.\n" +
+                                    ",    /         '.\\   /.'         \\    ,\n" +
+                                    "\\`--'  .--.    .-.> <.-.    .--.  '--`/\n" +
+                                    " '.__.'    '._/ ^ ) ( ^ \\_.'    '.__.'\n" +
+                                    "             |  |`| |`|  |\n" +
+                                    "             \\  \\ | | /  /\n" +
+                                    "              '. '; ;' .'\n" +
+                                    "                '. ' .'\n" +
+                                    "                /  /` \\\n" +
+                                    "               |  | |  |\n" +
+                                    "                \\ \\ / /\n" +
+                                    "                 '.'.'\n" +
+                                    "                 / Y \\\n" +
+                                    "                | | | |\n" +
+                                    "                \\ \\ / /\n" +
+                                    "                 '.'.'\n" +
+                                    "                 / / \\\n" +
+                                    "                (_| |_)\n" +
+                                    "                  '-'\n");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -262,10 +324,41 @@ public class MenusController {
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(12, 13, "Arco Longo");
-                    System.out.println("asdasd");
+                    System.out.println("\n" +
+                            "             4$$-.\n" +
+                            "             4   \".\n" +
+                            "             4    ^.\n" +
+                            "             4     $\n" +
+                            "             4     'b\n" +
+                            "             4      \"b.\n" +
+                            "             4        $\n" +
+                            "             4        $r\n" +
+                            "             4        $F\n" +
+                            "  -$b========4========$b====*P=-\n" +
+                            "             4       *$$F\n" +
+                            "             4        $$\"\n" +
+                            "             4       .$F\n" +
+                            "             4       dP\n" +
+                            "             4      F\n" +
+                            "             4     @\n" +
+                            "             4    .\n" +
+                            "             4.\n" +
+                            "            '$$          '");
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(15, 10, "Balestra");
-                    System.out.println("zczxc");
+                    System.out.println("\n" +
+                            "   (\n" +
+                            "    \\n" +
+                            "    | \\n" +
+                            "    |  \\\n" +
+                            "    |   )\n" +
+                            "##-------------->        \n" +
+                            "    |   )\n" +
+                            "    |  /\n" +
+                            "    | /\n" +
+                            "    |/\n" +
+                            "    /\n" +
+                            "   (");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
