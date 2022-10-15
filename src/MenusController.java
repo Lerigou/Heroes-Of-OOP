@@ -23,6 +23,7 @@ public class MenusController {
 
         if (escolha == 1) {
             System.out.println("Eba");
+            qtdPersonagens = 0;
             criarPersonagem(personagens);
         } else if (escolha ==  2){
             System.out.println("Ta bom, tchau!");
@@ -31,11 +32,15 @@ public class MenusController {
 
     public void escolherNome(Personagem p) {
         System.out.println("Escolha um nome para o seu personagem: ");
-        // Instanciando o objeto Scanner
         Scanner inputNome = new Scanner(System.in);
-        // Instanciando o objeto scanner dentro da variavel inputNome
         p.setNome(inputNome.nextLine());
+       if (p.getNome().isEmpty()){
+        System.out.println("Nome inválido. Começe novamente.\n\n-------\n\n");
+        escolherNome(personagens.get(qtdPersonagens));
+       }else{
         System.out.println("Seu personagem se chama: " + p.getNome());
+       }
+        
     }
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
