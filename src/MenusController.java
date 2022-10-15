@@ -178,9 +178,8 @@ public class MenusController {
 
 
             escolherNome(personagens.get(qtdPersonagens));
-            escolherArma(personagens.get(qtdPersonagens));
-
             qtdPersonagens += 1;
+            escolherArma(personagens.get(qtdPersonagens));
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
