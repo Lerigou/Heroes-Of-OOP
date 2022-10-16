@@ -448,7 +448,6 @@ public class MenusController {
         }
 
     }
-}
 
     public void realizarAtaque(ArrayList<Personagem> personagens) {
 
