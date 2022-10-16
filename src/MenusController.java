@@ -3,14 +3,16 @@ import java.util.Scanner;
 
 public class MenusController {
 
-    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar uma nova partida(leva ao menu2) ou sair do jogo
-    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if else de acordo com a resposta do personagem)
+    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar
+    // uma nova partida(leva ao menu2) ou sair do jogo
+    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if
+    // else de acordo com a resposta do personagem)
     // o usuário pode criar até 3 personagens, começar a partida ou sair do jogo
     // Menu4 ->
     private ArrayList<Personagem> personagens;
     int qtdPersonagens = 0;
 
-    public MenusController(){
+    public MenusController() {
         personagens = new ArrayList<>();
     }
 
@@ -25,7 +27,7 @@ public class MenusController {
             System.out.println("Eba");
             qtdPersonagens = 0;
             criarPersonagem(personagens);
-        } else if (escolha ==  2){
+        } else if (escolha == 2) {
             System.out.println("Ta bom, tchau!");
         }
     }
@@ -33,14 +35,26 @@ public class MenusController {
     public void escolherNome(Personagem p) {
         System.out.println("Escolha um nome para o seu personagem: ");
         Scanner inputNome = new Scanner(System.in);
-        p.setNome(inputNome.nextLine());
+        String nome = inputNome.nextLine();
+        p.setNome(nome);
+
+        //Validação de nome
        if (p.getNome().isEmpty()){
         System.out.println("Nome inválido. Começe novamente.\n\n-------\n\n");
         escolherNome(personagens.get(qtdPersonagens));
        }else{
-        System.out.println("Seu personagem se chama: " + p.getNome());
+        //Validação de nome já existente
+        for(int i = 0; i < qtdPersonagens; ++i){
+            if(personagens.get(i).getNome().equals(nome)){
+                System.out.println("Nome já informado!");
+                escolherNome(personagens.get(qtdPersonagens));
+                        
+            }else{
+                System.out.println("Seu personagem se chama: " + p.getNome());
+            }
+            
+        }
        }
-        
     }
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
@@ -130,52 +144,29 @@ public class MenusController {
                             "\033[1;Defesa: 30 \n" +
                             "\033[1;PVD: 160 \n" +
                             "\033[1;97m\n" +
-                            "                                                 |\n" +
-                            "                                                         \\.\n" +
-                            "                                                         /|.\n" +
-                            "                                                       /  `|.\n" +
-                            "                                                     /     |.\n" +
-                            "                                                   /       |.\n" +
-                            "                                                 /         `|.\n" +
-                            "                                               /            |.\n" +
-                            "                                             /              |.\n" +
-                            "                                           /                |.\n" +
-                            "      __                                 /                  `|.\n" +
-                            "       -\\                              /                     |.\n" +
-                            "         \\\\                          /                       |.\n" +
-                            "           \\\\                      /                         |.\n" +
-                            "            \\|                   /                           |\\\n" +
-                            "              \\#####\\          /                             ||\n" +
-                            "          ==###########>     /                               ||\n" +
-                            "           \\##==      \\    /                                 ||\n" +
-                            "      ______ =       =|__/___                                ||\n" +
-                            "  ,--' ,----`-,__ ___/'  --,-`-==============================##==========>\n" +
-                            " \\               '        ##_______ ______   ______,--,____,=##,__\n" +
-                            "  `,    __==    ___,-,__,--'#'  ==='      `-'              | ##,-/\n" +
-                            "    `-,____,---'       \\####\\              |        ____,--\\_##,/\n" +
-                            "        #_              |##   \\  _____,---==,__,---'         ##\n" +
-                            "         #              ]===--==\\                            ||\n" +
-                            "         #,             ]         \\                          ||\n" +
-                            "          #_            |           \\                        ||\n" +
-                            "           ##_       __/'             \\                      ||\n" +
-                            "            ####='     |                \\                    |/\n" +
-                            "             ###       |                  \\                  |.\n" +
-                            "             ##       _'                    \\                |.\n" +
-                            "            ###=======]                       \\              |.\n" +
-                            "           ///        |                         \\           ,|.\n" +
-                            "           //         |                           \\         |.\n" +
-                            "                                                    \\      ,|.\n" +
-                            "                                                      \\    |.\n" +
-                            "                                                        \\  |.\n" +
-                            "                                                          \\|.\n" +
-                            "                                                          /.\n" +
-                            "                                                         |");
+                            "            /`.                      \n" +
+                            "           /   :.                        \n" +
+                            "          /     \\\\                      \n" +
+                            "       ,;/,      ::              \n" +
+                            "   ___:c/.(      ||                     \n" +
+                            " ,'  _|:)>>>--,-'B)>                    \n" +
+                            "(  '---'\\--'` _,'||                     \n" +
+                            " `--.    \\ ,-'   ;;                    \n" +
+                            "     |    \\|    //                 \n" +
+                            "     |     \\   ;'                 \n" +
+                            "     |_____|\\,'                          \n" +
+                            "     :     :                             \n" +
+                            "     |  ,  |                             \n" +
+                            "     | : \\ :                             \n" +
+                            "     | | : :                             \n" +
+                            "     | | | |                            \n" +
+                            "     | | |_`.                   \n" +
+                            "     '--`                             \n");
                     personagens.add(new Arqueiro());
                     break;
                 default:
                     System.out.println("\033[1;97mOpção indisponível! Por favor, escolha uma das opções indicadas");
             }
-
 
             escolherNome(personagens.get(qtdPersonagens));
             //qtdPersonagens += 1;
@@ -187,14 +178,16 @@ public class MenusController {
                 String dragao = "LazyProg";
                 personagens.get(3).setNome(dragao);
                 System.out.println("\033[1;97mLimite de personagens atingido!");
+                
                 adicionarPersonagem = false;
+
                 //iniciarJogo();
                 
                 turno();
-                
                 break;
-                // colocar o método que vai iniciar o jogo
             }
+
+
 
             System.out.println("\033[1;97mDeseja adicionar um novo personagem? \n" +
                     "\033[1;32m1- Para adicionar um novo personagem \n" +
@@ -214,7 +207,7 @@ public class MenusController {
     public void escolherArma(Personagem p) {
         Scanner inputArma = new Scanner(System.in);
         boolean opcaoInvalida;
-        Arma arma = new Arma(0,0, " ");
+        Arma arma = new Arma(0, 0, " ");
 
         if (p.getClass().getSimpleName() == "Guerreiro") {
             do {
@@ -224,49 +217,70 @@ public class MenusController {
                 if (armaEscolhida == 1) {
                     arma = new Arma(10, 15, "Espada");
                     System.out.println("\n" +
-                            "                   {}\n" +
-                            "                  .--.\n" +
-                            "                 /.--.\\\n" +
-                            "                 |====|\n" +
-                            "                 |`::`|\n" +
-                            "             .-;`\\..../`;_.-^-._\n" +
-                            "      /\\\\   /  |...::..|`   :   `|\n" +
-                            "      |:'\\ |   /'''::''|   .:.   |\n" +
-                            "     @|\\ /\\;-,/\\   ::  |..:::::..|\n" +
-                            "     `||\\ <` >  >._::_.| ':::::' |\n" +
-                            "      || `\"\"`  /   ^^  |   ':'   |\n" +
-                            "      ||       |       \\    :    /\n" +
-                            "      ||       |        \\   :   / \n" +
-                            "      ||       |___/\\___|`-.:.-`\n" +
-                            "      ||        \\_ || _/    `\n" +
-                            "      ||        <_ >< _>\n" +
-                            "      ||        |  ||  |\n" +
-                            "      ||        |  ||  |\n" +
-                            "      ||       _\\.:||:./_\n" +
-                            "      \\/      /____/\\____\\");
+                            "        )         \n" +
+                            "          (            \n" +
+                            "        '    }      \n" +
+                            "      (    '      \n" +
+                            "     '      (   \n" +
+                            "      )  |    ) \n" +
+                            "    '   /|\\    `\n" +
+                            "   )   / | \\  ` )   \n" +
+                            "  {    | | |  {   \n" +
+                            " }     | | |  .\n" +
+                            "  '    | | |    )\n" +
+                            " (    /| | |\\    .\n" +
+                            "  .  / | | | \\  (\n" +
+                            "}    \\ \\ | / /  .        \n" +
+                            " (    \\ `-' /    }\n" +
+                            " '    / ,-. \\    ' \n" +
+                            "  }  / / | \\ \\  }\n" +
+                            " '   \\ | | | /   } \n" +
+                            "  (   \\| | |/  (\n" +
+                            "    )  | | |  )\n" +
+                            "    .  | | |  '\n" +
+                            "       J | L\n" +
+                            " /|    J_|_L    |\\\n" +
+                            " \\ \\___/ o \\___/ /\n" +
+                            "  \\_____ _ _____/\n" +
+                            "        |-|\n" +
+                            "        |-|\n" +
+                            "        |-|\n" +
+                            "       ,'-'.\n" +
+                            "       '---'");
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(17, 8, "Machado");
                     System.out.println("\n" +
-                            "   ,   A           {}\n" +
-                            "  / \\, | ,        .--.\n" +
-                            " |    =|= >      /.--.\\\n" +
-                            "  \\ /` | `       |====|\n" +
-                            "   `   |         |`::`|  \n" +
-                            "       |     .-;`\\..../`;_.-^-._\n" +
-                            "      /\\\\/  /  |...::..|`   :   `|\n" +
-                            "      |:'\\ |   /'''::''|   .:.   |\n" +
-                            "       \\ /\\;-,/\\   ::  |..:::::..|\n" +
-                            "       |\\ <` >  >._::_.| ':::::' |\n" +
-                            "       | `\"\"`  /   ^^  |   ':'   |\n" +
-                            "       |       |       \\    :    /\n" +
-                            "       |       |        \\   :   / \n" +
-                            "       |       |___/\\___|`-.:.-`\n" +
-                            "       |        \\_ || _/    `\n" +
-                            "       |        <_ >< _>\n" +
-                            "       |        |  ||  |\n" +
-                            "       |        |  ||  |\n" +
-                            "       |       _\\.:||:./_\n" +
-                            "       |      /____/\\____\\");
+                            "                     _,,--.._\n" +
+                            "                    /. ` ` .  `.\n" +
+                            "                    )|       `  `.\n" +
+                            "       .           / |         `  `\n" +
+                            "        `.        / /            ` `\n" +
+                            "         `.`.    / /              ` `\n" +
+                            "           `.`.'' /                ' :\n" +
+                            "            <','/'`                . ;\n" +
+                            "           ,-'.-    `             , /\n" +
+                            "       _.-',-^`       `      _.-----\n" +
+                            " /`==::.,-'     `       ` ,-'\n" +
+                            "/ /               `     .;\n" +
+                            "| |..               ` .,' `.\n" +
+                            "| ':`....---.       ,'`'.   `.\n" +
+                            " .`:.:.:.:.:-..    /     `.   `.\n" +
+                            "  .`ccoccoccoc'``./        `.   `.\n" +
+                            "   `.`CQCCQCCCQCC/           `.   `.\n" +
+                            "     `.`8O8O8O8O8(             `.   `.\n" +
+                            "       `.`_-_@-@_-;              `. .'\"'.\n" +
+                            "            '\"\"'                   :,' ,--'\n" +
+                            "                                    `.` _,--\n" +
+                            "             A                        `.  _,',.\n" +
+                            "            (@)                         `. .-' `_\n" +
+                            "                                          `. ,-^.`.\n" +
+                            "               A                            `. - _.-.\n" +
+                            "              (@)                             `.', ,'-\n" +
+                            "                                                `. _,-`__\n" +
+                            "                                                  `. _-,`|\n" +
+                            "                                                    |,_-`|\n" +
+                            "                                                    '----'\n");
+                    // TODO procurar armas avulsas, pra padronizar com o mago e com o arqueiro
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -302,27 +316,27 @@ public class MenusController {
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(13, 12, "Cajado");
                     System.out.println("\n" +
-                                    "                   _\n" +
-                                    "        _..._    /` `\\    _..._\n" +
-                                    "      .'     '. |     | .'     '.\n" +
-                                    ",    /         '.\\   /.'         \\    ,\n" +
-                                    "\\`--'  .--.    .-.> <.-.    .--.  '--`/\n" +
-                                    " '.__.'    '._/ ^ ) ( ^ \\_.'    '.__.'\n" +
-                                    "             |  |`| |`|  |\n" +
-                                    "             \\  \\ | | /  /\n" +
-                                    "              '. '; ;' .'\n" +
-                                    "                '. ' .'\n" +
-                                    "                /  /` \\\n" +
-                                    "               |  | |  |\n" +
-                                    "                \\ \\ / /\n" +
-                                    "                 '.'.'\n" +
-                                    "                 / Y \\\n" +
-                                    "                | | | |\n" +
-                                    "                \\ \\ / /\n" +
-                                    "                 '.'.'\n" +
-                                    "                 / / \\\n" +
-                                    "                (_| |_)\n" +
-                                    "                  '-'\n");
+                            "                   _\n" +
+                            "        _..._    /` `\\    _..._\n" +
+                            "      .'     '. |     | .'     '.\n" +
+                            ",    /         '.\\   /.'         \\    ,\n" +
+                            "\\`--'  .--.    .-.> <.-.    .--.  '--`/\n" +
+                            " '.__.'    '._/ ^ ) ( ^ \\_.'    '.__.'\n" +
+                            "             |  |`| |`|  |\n" +
+                            "             \\  \\ | | /  /\n" +
+                            "              '. '; ;' .'\n" +
+                            "                '. ' .'\n" +
+                            "                /  /` \\\n" +
+                            "               |  | |  |\n" +
+                            "                \\ \\ / /\n" +
+                            "                 '.'.'\n" +
+                            "                 / Y \\\n" +
+                            "                | | | |\n" +
+                            "                \\ \\ / /\n" +
+                            "                 '.'.'\n" +
+                            "                 / / \\\n" +
+                            "                (_| |_)\n" +
+                            "                  '-'\n");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -382,10 +396,12 @@ public class MenusController {
         System.out.println("\033[1;97mVocê escolheu a arma " + arma.getNome() + "\n" +
                 "\033[1;93m+buff de " + arma.getAtaqueArma() + " no ataque total \n" +
                 "\033[1;93m+buff de " + arma.getDefesaArma() + " na defesa total \n" +
-                "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa() + '\n');
+                "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa()
+                + '\n');
     }
-    //Fim do metodo Escolher Arma
 
+    //Fim do metodo Escolher Arma
+    
     public void turno (){
         Scanner inputUser = new Scanner(System.in);
         int qtdTurno = 1;
@@ -434,6 +450,7 @@ public class MenusController {
     }
 }
 
+    public void realizarAtaque(ArrayList<Personagem> personagens) {
 
-
-
+    }
+}
