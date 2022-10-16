@@ -17,9 +17,15 @@ public class MenusController {
     }
 
     public void iniciarJogo() {
+        System.out.println("\033[1;97m\n" +
+                " _____                            ___    _____ _____ _____ \n" +
+                "|  |  |___ ___ ___ ___ ___    ___|  _|  |     |     |  _  |\n" +
+                "|     | -_|  _| . | -_|_ -|  | . |  _|  |  |  |  |  |   __|\n" +
+                "|__|__|___|_| |___|___|___|  |___|_|    |_____|_____|__|" +
+                "\n");
         System.out.println("\033[1;97mDeseja iniciar uma nova partida ou sair? \n" +
                 "1- Nova partida\n" +
-                "\033[1;31m2- Sair \033[1;97m");
+                "\033[1;91m2- Sair \033[1;97m");
         Scanner menu1 = new Scanner(System.in);
         int escolha = menu1.nextInt();
 
@@ -78,9 +84,9 @@ public class MenusController {
                 case 1:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 1: Guerreiro \n" +
-                            "\033[1;31mAtaque: 30\n" +
-                            "\033[1;36mDefesa: 20\n" +
-                            "\033[1;32mPVD: 180\033" +
+                            "\033[1;91mAtaque: 30\n" +
+                            "\033[1;96mDefesa: 20\n" +
+                            "\033[1;92mPVD: 180 \n" +
                             "\033[1;97m\n" +
                             "                   {}\n" +
                             "                  .--.\n" +
@@ -108,9 +114,9 @@ public class MenusController {
                 case 2:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 2: Mago \n" +
-                            "\033[1;Ataque: 20 \n" +
-                            "\033[1;Defesa: 10 \n" +
-                            "\033[1;PVD: 200 \n" +
+                            "\033[1;91mAtaque: 20 \n" +
+                            "\033[1;96mDefesa: 10 \n" +
+                            "\033[1;92mPVD: 200 \n" +
                             "\033[1;97m\n " +
                             "                     ____ \n" +
                             "                  .'* *.'\n" +
@@ -140,9 +146,9 @@ public class MenusController {
                 case 3:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 3: Arqueiro \n" +
-                            "\033[1;Ataque: 20 \n" +
-                            "\033[1;Defesa: 30 \n" +
-                            "\033[1;PVD: 160 \n" +
+                            "\033[1;91mAtaque: 20 \n" +
+                            "\033[1;96mDefesa: 30 \n" +
+                            "\033[1;92mPVD: 160 \n" +
                             "\033[1;97m\n" +
                             "            /`.                      \n" +
                             "           /   :.                        \n" +
@@ -169,14 +175,13 @@ public class MenusController {
             }
 
             escolherNome(personagens.get(qtdPersonagens));
-            //qtdPersonagens += 1;
             escolherArma(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
                 personagens.add(new Dragao());
-                String dragao = "LazyProg";
-                personagens.get(3).setNome(dragao);
+                String nomeDragao = "LazyProg";
+                personagens.get(3).setNome(nomeDragao);
                 System.out.println("\033[1;97mLimite de personagens atingido!");
                 
                 adicionarPersonagem = false;
@@ -424,25 +429,28 @@ public class MenusController {
         // Erro na lógica do calculo de ataque e defesa
         while (personagens.get(3).getPontosVida() > 0 || personagens.get(0).getPontosVida() > 0){
             
-            System.out.println("Turno " + qtdTurno +"! O primeiro a agir é o: " + personagens.get(0).getNome());
-            System.out.println("Escolha 1 para atacar, ou 2 para defender");
+            System.out.println("\nTurno " + qtdTurno + "! O primeiro a agir é o: " + personagens.get(0).getNome());
+            System.out.println("Escolha 1 para \033[1;91matacar\033[1;97m, ou 2 para \033[1;96mdefender\033[1;97m");
             int escolhaUser = inputUser.nextInt();
 
             if (escolhaUser == 1){
                 int dano = (personagens.get(0).getAtaque() - (int)personagens.get(3).getDefesa());
-                personagens.get(3).setPontosVida(dano);
+                int novoPVD = personagens.get(3).getPontosVida() - dano;
+                personagens.get(3).setPontosVida(novoPVD);
 
-                System.out.println("Vida dragão: " + personagens.get(3).getPontosVida());
-
-                System.out.println("Você atacou!" + personagens.get(0).getAtaque() + " Agora a vida do drãgão é de " + personagens.get(0).getPontosVida() + " PDV.");
+                System.out.println("\033[1;97mVocê atacou o dragão causando um dano de: \033[1;31m" + personagens.get(0).getAtaque() + "\n" +
+                        "\033[1;97mPorém o dragão defendeu! Então o dano total causado foi de: \033[1;91m" + dano + "\n" +
+                        "\033[1;97mA vida atual do dragão é de: \033[1;93m" + personagens.get(3).getPontosVida() + "\n \033[1;97m");
 
             } else if (escolhaUser == 2){
-                int danoPersonagem = (personagens.get(3).getAtaque() - (int)personagens.get(0).getDefesa());
-                personagens.get(0).setPontosVida(danoPersonagem);
+                int dano = (personagens.get(3).getAtaque() - (int)personagens.get(0).getDefesa());
+                int novoPVD = personagens.get(0).getPontosVida() - dano;
+                personagens.get(0).setPontosVida(novoPVD);
 
-                System.out.println("Você defendeu! Agora a sua vida é de " + personagens.get(0).getPontosVida() + " PDV.");
+                System.out.println("\033[1;97mO dragão atacou e causou um dano de : \033[1;31m" + personagens.get(3).getAtaque() + "\n" +
+                        "\033[1;97mPorém o você defendeu! Então o dano total causado foi de: \033[1;31m" + dano + "\n" +
+                        "\033[1;97mA sua vida atual é de: \033[1;93m" + personagens.get(0).getPontosVida() + "\n\033[1;97m");
             }
-
 
             qtdTurno++;
         }

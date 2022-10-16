@@ -4,8 +4,6 @@ public class Dragao extends Personagem{
     //private final int defesa = 30;
     //private int ptsVida = 300;
 
-    String nome = "Dragao";
-
     public Dragao(){
         super(30, 30, 300);
     }
