@@ -3,14 +3,16 @@ import java.util.Scanner;
 
 public class MenusController {
 
-    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar uma nova partida(leva ao menu2) ou sair do jogo
-    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if else de acordo com a resposta do personagem)
+    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar
+    // uma nova partida(leva ao menu2) ou sair do jogo
+    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if
+    // else de acordo com a resposta do personagem)
     // o usuário pode criar até 3 personagens, começar a partida ou sair do jogo
     // Menu4 ->
     private ArrayList<Personagem> personagens;
     int qtdPersonagens = 0;
 
-    public MenusController(){
+    public MenusController() {
         personagens = new ArrayList<>();
     }
 
@@ -25,7 +27,7 @@ public class MenusController {
             System.out.println("Eba");
             qtdPersonagens = 0;
             criarPersonagem(personagens);
-        } else if (escolha ==  2){
+        } else if (escolha == 2) {
             System.out.println("Ta bom, tchau!");
         }
     }
@@ -33,14 +35,26 @@ public class MenusController {
     public void escolherNome(Personagem p) {
         System.out.println("Escolha um nome para o seu personagem: ");
         Scanner inputNome = new Scanner(System.in);
-        p.setNome(inputNome.nextLine());
+        String nome = inputNome.nextLine();
+        p.setNome(nome);
+
+        //Validação de nome
        if (p.getNome().isEmpty()){
         System.out.println("Nome inválido. Começe novamente.\n\n-------\n\n");
         escolherNome(personagens.get(qtdPersonagens));
        }else{
-        System.out.println("Seu personagem se chama: " + p.getNome());
+        //Validação de nome já existente
+        for(int i = 0; i < qtdPersonagens; ++i){
+            if(personagens.get(i).getNome().equals(nome)){
+                System.out.println("Nome já informado!");
+                escolherNome(personagens.get(qtdPersonagens));
+                        
+            }else{
+                System.out.println("Seu personagem se chama: " + p.getNome());
+            }
+            
+        }
        }
-        
     }
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
@@ -176,13 +190,13 @@ public class MenusController {
                     System.out.println("\033[1;97mOpção indisponível! Por favor, escolha uma das opções indicadas");
             }
 
-
             escolherNome(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
             escolherArma(personagens.get(qtdPersonagens));
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
+                
                 adicionarPersonagem = false;
                 iniciarJogo();
                 break;
@@ -207,7 +221,7 @@ public class MenusController {
     public void escolherArma(Personagem p) {
         Scanner inputArma = new Scanner(System.in);
         boolean opcaoInvalida;
-        Arma arma = new Arma(0,0, " ");
+        Arma arma = new Arma(0, 0, " ");
 
         if (p.getClass().getSimpleName() == "Guerreiro") {
             do {
@@ -295,27 +309,27 @@ public class MenusController {
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(13, 12, "Cajado");
                     System.out.println("\n" +
-                                    "                   _\n" +
-                                    "        _..._    /` `\\    _..._\n" +
-                                    "      .'     '. |     | .'     '.\n" +
-                                    ",    /         '.\\   /.'         \\    ,\n" +
-                                    "\\`--'  .--.    .-.> <.-.    .--.  '--`/\n" +
-                                    " '.__.'    '._/ ^ ) ( ^ \\_.'    '.__.'\n" +
-                                    "             |  |`| |`|  |\n" +
-                                    "             \\  \\ | | /  /\n" +
-                                    "              '. '; ;' .'\n" +
-                                    "                '. ' .'\n" +
-                                    "                /  /` \\\n" +
-                                    "               |  | |  |\n" +
-                                    "                \\ \\ / /\n" +
-                                    "                 '.'.'\n" +
-                                    "                 / Y \\\n" +
-                                    "                | | | |\n" +
-                                    "                \\ \\ / /\n" +
-                                    "                 '.'.'\n" +
-                                    "                 / / \\\n" +
-                                    "                (_| |_)\n" +
-                                    "                  '-'\n");
+                            "                   _\n" +
+                            "        _..._    /` `\\    _..._\n" +
+                            "      .'     '. |     | .'     '.\n" +
+                            ",    /         '.\\   /.'         \\    ,\n" +
+                            "\\`--'  .--.    .-.> <.-.    .--.  '--`/\n" +
+                            " '.__.'    '._/ ^ ) ( ^ \\_.'    '.__.'\n" +
+                            "             |  |`| |`|  |\n" +
+                            "             \\  \\ | | /  /\n" +
+                            "              '. '; ;' .'\n" +
+                            "                '. ' .'\n" +
+                            "                /  /` \\\n" +
+                            "               |  | |  |\n" +
+                            "                \\ \\ / /\n" +
+                            "                 '.'.'\n" +
+                            "                 / Y \\\n" +
+                            "                | | | |\n" +
+                            "                \\ \\ / /\n" +
+                            "                 '.'.'\n" +
+                            "                 / / \\\n" +
+                            "                (_| |_)\n" +
+                            "                  '-'\n");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -375,13 +389,11 @@ public class MenusController {
         System.out.println("\033[1;97mVocê escolheu a arma " + arma.getNome() + "\n" +
                 "\033[1;93m+buff de " + arma.getAtaqueArma() + " no ataque total \n" +
                 "\033[1;93m+buff de " + arma.getDefesaArma() + " na defesa total \n" +
-                "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa() + '\n');
+                "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa()
+                + '\n');
     }
+
     public void realizarAtaque(ArrayList<Personagem> personagens) {
-        
+
     }
 }
-
-
-
-
