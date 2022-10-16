@@ -377,6 +377,9 @@ public class MenusController {
                 "\033[1;93m+buff de " + arma.getDefesaArma() + " na defesa total \n" +
                 "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa() + '\n');
     }
+    public void realizarAtaque(ArrayList<Personagem> personagens) {
+        
+    }
 }
 
 
