@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Dragao extends Personagem {
     // Dragão - ataque: 30; defesa: 30; ponto de vida: 300
@@ -7,7 +8,7 @@ public class Dragao extends Personagem {
     // private final int defesa = 30;
     // private int ptsVida = 300;
 
-    private String nome = "LazyProg";
+    private final String nome = "LazyProg";
 
     public Dragao() {
         super(30, 30, 300);
@@ -16,6 +17,24 @@ public class Dragao extends Personagem {
     @Override
     public void atacar(Personagem personagem) {
         int dano;
+
+        System.out.println("\n" +
+                        "                                                                   ____________\\n\" +\n" +
+                        "                                             (`-..________....---''  ____..._.-`\\n\" +\n" +
+                        "                                               \\\\\\\\`._______.._,.---'''     ,'\\n\" +\n" +
+                        "                                              ; )`.      __..-'`-.      /\\n\" +\n" +
+                        "                                             / /     _.-' _,.;;._ `-._,'\\n\" +\n" +
+                        "                                            / /   ,-' _.-'  //   ``--._``._\\n\" +\n" +
+                        "                                          ,','_.-' ,-' _.- (( =-    -. `-._`-._____\\n\" +\n" +
+                        "                                        ,;.''__..-'   _..--.\\\\\\\\.--'````--.._``-.`-._`.\\n\" +\n" +
+                        "                         _          |\\\\,' .-''        ```-'`---'`-...__,._  ``-.`-.`-.`.\\n\" +\n" +
+                        "              _     _.-,'(__)\\\\__)\\\\-'' `     ___  .          `     \\\\      `--._\\n\" +\n" +
+                        "            ,',)---' O)          `     `      ``-.   `     /     /     `     `-.\\n\" +\n" +
+                        "            \\\\_____--.  '`  `               __..-.  \\\\     . (   < _...-----..._   `.\\n\" +\n" +
+                        "             \\\\_,--..__. \\\\\\\\ .-`.\\\\----'';``,..-.__ \\\\  \\\\      ,`_. `.,-'`--'`---''`.  )\\n\" +\n" +
+                        "                       `.\\\\`.\\\\  `_.-..' ,'   _,-..'  /..,-''(, ,' ; ( _______`___..'__\\n\" +\n" +
+                        "                               ((,(,__(    ((,(,__,'  ``'-- `'`.(\\\\  `.,..______   _/\\n\" +\n" +
+                        "                                                                  ``--------..._``--.__\\n\");");
         
         //RANDOMIZAR FALA DO ATAQUE DADO PELO DRAGÃO
         final String[] falasDragao = {"ataca ferozmente com um bafo congelante."
