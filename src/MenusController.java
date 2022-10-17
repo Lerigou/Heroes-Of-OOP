@@ -18,6 +18,7 @@ public class MenusController {
 
     public void iniciarJogo() {
         System.out.println("\033[1;97m\n" +
+
                 "\033[0;33m _____                            ___    _____ _____ _____ \n" +
                 "|  |  |___ ___ ___ ___ ___    ___|  _|  |     |     |  _  |\n" +
                 "|     | -_|  _| . | -_|_ -|  | . |  _|  |  |  |  |  |   __|\n" +
@@ -27,6 +28,7 @@ public class MenusController {
         System.out.println("\033[1;97m- Deseja iniciar uma nova partida ou sair? \n" +
                 "\033[1;32m1 - Nova partida\033\n" +
                 "\033[1;31m2 - Sair \033[1;97m");
+
         Scanner menu1 = new Scanner(System.in);
         int escolha = menu1.nextInt();
 
@@ -102,9 +104,9 @@ public class MenusController {
                 case 1:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 1: Guerreiro \n" +
-                            "\033[1;31mAtaque: 30\n" +
-                            "\033[1;36mDefesa: 20\n" +
-                            "\033[1;32mPVD: 180\033" +
+                            "\033[1;91mAtaque: 30\n" +
+                            "\033[1;96mDefesa: 20\n" +
+                            "\033[1;92mPVD: 180 \n" +
                             "\033[1;97m\n" +
                             "                   {}\n" +
                             "                  .--.\n" +
@@ -132,6 +134,7 @@ public class MenusController {
                 case 2:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 2: Mago \n" +
+
                             "\033[1;31mAtaque: 20 \n" +
                             "\033[1;36mDefesa: 10 \n" +
                             "\033[1;32mPVD: 200 \n" +
@@ -167,6 +170,7 @@ public class MenusController {
                             "\033[1;31mAtaque: 20 \n" +
                             "\033[1;36mDefesa: 30 \n" +
                             "\033[1;32mPVD: 160 \n" +
+
                             "\033[1;97m\n" +
                             "            /`.                      \n" +
                             "           /   :.                        \n" +
@@ -193,14 +197,13 @@ public class MenusController {
             }
 
             escolherNome(personagens.get(qtdPersonagens));
-            // qtdPersonagens += 1;
             escolherArma(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
                 personagens.add(new Dragao());
-                String dragao = "LazyProg";
-                personagens.get(3).setNome(dragao);
+                String nomeDragao = "LazyProg";
+                personagens.get(3).setNome(nomeDragao);
                 System.out.println("\033[1;97mLimite de personagens atingido!");
 
                 adicionarPersonagem = false;
