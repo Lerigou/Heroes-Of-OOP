@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenusController {
@@ -431,30 +432,65 @@ public class MenusController {
     }
 
     public void turno (ArrayList<Personagem> personagens, Dragao dragao) {
-        for (Personagem personagem: personagens){
-            System.out.println("\nDeseja atacar ou defender?"+
+        boolean todosVivos;
+        do {
+            todosVivos = true;
+            for (Personagem personagem : personagens) {
+                System.out.println("\nDeseja atacar ou defender?"+
             "\n\033[1;31m1 - Atacar"+
             "\n\033[1;36m2 - Defender\033[1;97m");
             Scanner atqDef = new Scanner(System.in);
-            int escolhaTurno = atqDef.nextInt();
-            boolean escolhaInvalida = true;
+                Scanner atqDef = new Scanner(System.in);
+                int escolhaTurno = atqDef.nextInt();
+                boolean escolhaInvalida = true;
 
-            while(escolhaInvalida == true) {
-                if (escolhaTurno == 1) {
-                    personagem.atacar(dragao);
-                    escolhaInvalida = false;
-                } else if (escolhaTurno == 2) {
-                    personagem.defender();
-                    escolhaInvalida = false;
-                } else {
-                    System.out.println("Escolha inválida!");
-                    escolhaInvalida = true;
-                    iniciarJogo();
+                while (escolhaInvalida == true) {
+                    if (escolhaTurno == 1) {
+                        personagem.atacar(dragao);
+                        escolhaInvalida = false;
+                    } else if (escolhaTurno == 2) {
+                        personagem.defender();
+                        escolhaInvalida = false;
+                    } else {
+                        System.out.println("Escolha inválida!");
+                        escolhaInvalida = true;
+
+                    }
                 }
             }
 
-        }
-        dragao.atacar(dragao.prepararAtaque(personagens));
+            System.out.println("Deseja sair do jogo? 1 ou 2");
+            Scanner atqDef = new Scanner(System.in);
+            int escolhaTurno = atqDef.nextInt();
+
+            if (escolhaTurno == 2){
+                System.out.println("saíram correndo");
+                home();
+            }
+
+
+            // Validação que confirma se o dragão está vivo ou não
+            if (dragao.getPontosVida() <= 0){
+                System.out.println(
+                        "O dragão morreu e todo mundo ganhou eba"
+                );
+                todosVivos = false;
+                // O System.exit(0) diz que o código será encerrado sem mensagem alguma após ser chamado
+                System.exit(0);
+            }
+
+            dragao.atacar(dragao.prepararAtaque(personagens));
+
+            // Esse for vai passar por todos os elementos do array e vai verificar se o personagem está vivo ou não
+            for (Personagem personagem : personagens) {
+                if (personagem.getPontosVida() <= 0){
+                    System.out.println("O personagem " + personagem.getNome() + " morreu");
+                    personagens.remove(personagem);
+
+                }
+            }
+
+        } while (todosVivos);
     }
 
 }
