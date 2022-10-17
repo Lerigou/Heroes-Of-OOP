@@ -4,19 +4,13 @@ import java.util.Scanner;
 
 public class MenusController {
 
-    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar
-    // uma nova partida(leva ao menu2) ou sair do jogo
-    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if
-    // else de acordo com a resposta do personagem)
-    // o usuário pode criar até 3 personagens, começar a partida ou sair do jogo
-    // Menu4 ->
     private ArrayList<Personagem> personagens;
     int qtdPersonagens = 0;
 
     public MenusController() {
         personagens = new ArrayList<>();
-        Personagem dragao = new Dragao();
     }
+
 
     public void home() {
         System.out.println("\033[1;97m\n" +
@@ -64,7 +58,7 @@ public class MenusController {
             System.out.println("\n\nOpa, acho que voce inseriu alguma coisa errada. Tente novamente\n\n- - - - - - -\n");
             home();
         }
-    }
+    } // Fim do método home
 
     public void escolherNome(Personagem p) {
         System.out.println("\033[1;93m\nEscolha um nome para o seu heroi: \033[1;97m");
@@ -72,7 +66,7 @@ public class MenusController {
         String nome = inputNome.nextLine();
         p.setNome(nome);
 
-        // Validação de nome
+        // Verificando se o nome é  nulo  ou já existente
         if (p.getNome().isEmpty()) {
             System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
             escolherNome(personagens.get(qtdPersonagens));
@@ -89,7 +83,7 @@ public class MenusController {
 
             }
         }
-    }
+    } // Fim do método escolherNome
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
@@ -202,16 +196,14 @@ public class MenusController {
                     System.out.println("\033[1;97mOpção indisponível! Por favor, escolha uma das opções indicadas");
             }
 
+            // chama os métodos escolherNome e escolherArma para o personagem do número correspondente ao qtdPersonagens
             escolherNome(personagens.get(qtdPersonagens));
             escolherArma(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
-
-                adicionarPersonagem = false;
                 iniciarJogo();
-
                 break;
             }
 
@@ -425,9 +417,7 @@ public class MenusController {
                 "\033[1;93m+buff de " + arma.getDefesaArma() + " na defesa total \n" +
                 "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa()
                 + '\n');
-    }
-
-    //Fim do metodo Escolher Arma
+    } //Fim do metodo Escolher Arma
 
     public void iniciarJogo() {
         turno(personagens, new Dragao());
@@ -491,6 +481,6 @@ public class MenusController {
             }
 
         } while (todosVivos);
-    }
+    } // Fim do método turno
 
 }

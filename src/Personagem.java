@@ -28,6 +28,7 @@ public abstract class Personagem{
     }
 
     public abstract void atacar(Personagem personagem);
+
     public void defender(){
         //RANDOMIZAR FALA DE DEFESA
         final String[] falasDefesa = {"esquiva para longe do dragao."
@@ -38,12 +39,9 @@ public abstract class Personagem{
         int falaN = random.nextInt(falasDefesa.length);
 
         System.out.println("\n\033[4;34mO heroi "+ falasDefesa[falaN]+"\033[0m\033[1;97m\n\n- - - - - -");
+        // Calcula a porcentagem adicional (10%) na defesa do personagem
         setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
     }
-
-
-    // Método para escolha do nome, onde um scanner é criado
-    // Para usar/pegar o que foi inserido no scanner é preciso utilizar o nextLine(), para Strins
 
     public int getAtaque() {
         return ataque;
