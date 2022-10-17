@@ -490,7 +490,7 @@ public class MenusController {
                 System.out.println("saíram correndo");
                 home();
             }
-            System.out.println("\033[1;93m\n- - - - - - - - - - - - - - - - - -\n\nNOVO TURNO\033[1;97m");
+            System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mNOVO TURNO\033[1;97m");
 
         } while (todosVivos);
     }
