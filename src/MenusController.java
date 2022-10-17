@@ -4,19 +4,13 @@ import java.util.Scanner;
 
 public class MenusController {
 
-    // Menu1 -> É o menu para o usuário, ele pergunta se o usuário deseja iniciar
-    // uma nova partida(leva ao menu2) ou sair do jogo
-    // Menu2 -> Criar novo personagem(nome e tipo de personagem, tipo de arma(if
-    // else de acordo com a resposta do personagem)
-    // o usuário pode criar até 3 personagens, começar a partida ou sair do jogo
-    // Menu4 ->
     private ArrayList<Personagem> personagens;
     int qtdPersonagens = 0;
 
     public MenusController() {
         personagens = new ArrayList<>();
-        Personagem dragao = new Dragao();
     }
+
 
     public void home() {
         System.out.println("\033[1;97m\n" +
@@ -35,13 +29,13 @@ public class MenusController {
         int escolha = menu1.nextInt();
 
         if (escolha == 1) {
-            System.out.println("\n\n\033[1;93mLAZYFROG E O REINO DE TAO TAO DISTANTE\n"+
-                                            "--------------------------------------");
-            System.out.println("\n\033[1;97mA nossa historia comeca no reino de Tao Tao Distante," +
-                    " um lugar calmo e pacato onde todos viviam em paz.\nCerto dia, do meio das montanhas congeladas," +
-                    " apos um dia de muito calor, despertou o dragao adormecido, LazyFrog, que veio diretamente ate o" +
-                    " reino de Tao Tao Distante.\nAgora cabe a voce, nobre aventureiro, salvar o reino das garras de" +
-                    " LazyFrog e se tornar um heroi.\n");
+            System.out.println("\n\n\033[1;93mLAZYPROG E O REINO DE TAO TAO DISTANTE\n"+
+            "--------------------------------------");
+            System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante,\n" +
+                    "um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas,\n" +
+                    "apos um dia de muito calor, despertou o dragão adormecido, LazyProg, que veio diretamente ate o\n" +
+                    "reino de Tao Tao Distante. Agora cabe a você, nobre aventureiro, salvar o reino das garras de\n" +
+                    "LazyProg e se tornar um heroi.\n");
             System.out.println("\033[1;36m                             -|             |-\n" +
                     "         -|                  [-_-_-_-_-_-_-_-]                  |-\n" +
                     "         [-_-_-_-_-]          |             |          [-_-_-_-_-]\n" +
@@ -64,7 +58,7 @@ public class MenusController {
             System.out.println("\n\nOpa, acho que voce inseriu alguma coisa errada. Tente novamente\n\n- - - - - - -\n");
             home();
         }
-    }
+    } // Fim do método home
 
     public void escolherNome(Personagem p) {
         System.out.println("\033[1;93m\nEscolha um nome para o seu heroi: \033[1;97m");
@@ -72,7 +66,7 @@ public class MenusController {
         String nome = inputNome.nextLine();
         p.setNome(nome);
 
-        // Validação de nome
+        // Verificando se o nome é  nulo  ou já existente
         if (p.getNome().isEmpty()) {
             System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
             escolherNome(personagens.get(qtdPersonagens));
@@ -89,7 +83,7 @@ public class MenusController {
 
             }
         }
-    }
+    } // Fim do método escolherNome
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
@@ -176,42 +170,39 @@ public class MenusController {
                             "\033[1;31mAtaque: 20 \n" +
                             "\033[1;36mDefesa: 30 \n" +
                             "\033[1;32mPVD: 160 \n" +
-
                             "\033[1;97m\n" +
-                            "            /`.                      \n" +
-                            "           /   :.                        \n" +
-                            "          /     \\\\                      \n" +
-                            "       ,;/,      ::              \n" +
-                            "   ___:c/.(      ||                     \n" +
-                            " ,'  _|:)>>>--,-'B)>                    \n" +
-                            "(  '---'\\--'` _,'||                     \n" +
-                            " `--.    \\ ,-'   ;;                    \n" +
-                            "     |    \\|    //                 \n" +
-                            "     |     \\   ;'                 \n" +
-                            "     |_____|\\,'                          \n" +
-                            "     :     :                             \n" +
-                            "     |  ,  |                             \n" +
-                            "     | : \\ :                             \n" +
-                            "     | | : :                             \n" +
-                            "     | | | |                            \n" +
-                            "     | | |_`.                   \n" +
-                            "     '--`                             \n");
+                            "                           *                      \n" +
+                            "                          &%                      \n" +
+                            "                         &  &(                    \n" +
+                            "                \\\\\\    %      &&               \n" +
+                            "                 __\\_ .         &&               \n" +
+                            "                  %&%%&&&          /%             \n" +
+                            "           ,%&&&%%%%%&%%&&(.     &&&&&(           \n" +
+                            "           *&&&%%%%%%%%&%.%&&&&&&(  &             \n" +
+                            "                 ,(/, /%%%         %              \n" +
+                            "                 #%%%%%%%%        &               \n" +
+                            "                  %%%%%%%%(     %/                \n" +
+                            "                  (//#&%%%%&%&&                   \n" +
+                            "                 (%%%%%(%%%%%& (&%%%              \n" +
+                            "                 &%%%%& %&&%  /#%%&               \n" +
+                            "                 %%%%(          &%%               \n" +
+                            "                  %%%(        #&%/                \n" +
+                            "          &&%&%%%%%%%%       #&%/                 \n" +
+                            "          &&%                 %&&&&               \n");
                     personagens.add(new Arqueiro());
                     break;
                 default:
                     System.out.println("\033[1;97mOpcao indisponível! Por favor, escolha uma das opcoes indicadas");
             }
 
+            // chama os métodos escolherNome e escolherArma para o personagem do número correspondente ao qtdPersonagens
             escolherNome(personagens.get(qtdPersonagens));
             escolherArma(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
-
-                adicionarPersonagem = false;
                 iniciarJogo();
-
                 break;
             }
 
@@ -399,18 +390,22 @@ public class MenusController {
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(15, 10, "Balestra");
                     System.out.println("\n" +
-                            "   (\n" +
-                            "    \\n" +
-                            "    | \\n" +
-                            "    |  \\\n" +
-                            "    |   )\n" +
-                            "##-------------->        \n" +
-                            "    |   )\n" +
-                            "    |  /\n" +
-                            "    | /\n" +
-                            "    |/\n" +
-                            "    /\n" +
-                            "   (\n");
+                            "                                               (#,\n" +
+                            "                                             ((#( \n" +
+                            " ###%###(,                                ,/    #,\n" +
+                            "   ./#########%%####/,.                 (       */\n" +
+                            "          ,(###########%%###(,       **          *\n" +
+                            "         */*,/#%//(#################/.          *,\n" +
+                            "                     /######((######(%#####(/, ,# \n" +
+                            "                              .####/(##,,,**/##(% \n" +
+                            "                             .*   (##/,,#&%#%*#%%(\n" +
+                            "                            (           ,(##/*/*. \n" +
+                            "                          (          ./###   /(   \n" +
+                            "                        *,       ,/#%%/           \n" +
+                            "                      ./   /(%%%%%,               \n" +
+                            "                     (%%%%#/.                     \n" +
+                            "                  #%./.                           \n" +
+                            "                                                  ");
                 } else {
                     System.out.println("Nao existe essa arma");
                     opcaoInvalida = true;
@@ -425,9 +420,7 @@ public class MenusController {
                 "\033[1;93m+buff de " + arma.getDefesaArma() + " na defesa total \n" +
                 "\033[1;97mTotalizando em um ataque de " + p.getAtaque() + " e em uma defesa de " + p.getDefesa()
                 + '\n');
-    }
-
-    //Fim do metodo Escolher Arma
+    } //Fim do metodo Escolher Arma
 
     public void iniciarJogo() {
         turno(personagens, new Dragao());
@@ -463,9 +456,26 @@ public class MenusController {
 
             // Validação que confirma se o dragão está vivo ou não
             if (dragao.getPontosVida() <= 0){
-                System.out.println(
-                        "O dragao morreu e todo mundo ganhou eba"
-                );
+                System.out.println("\033[1;97m\nApos uma luta debaixo de um calor escaldante, voces, nobres herois de Tao Tao Distante, derrotaram o temivel LazyProg! \n" +
+                        "A ausencia de exercicios fisicos durante o milenio em que permaneceu adormecido, no final das contas, contribuiram \n" +
+                        "para a sua derrota... \n" +
+                        "\nO povo de Tao Tao Distante comemora com alegria a derrota daquele que por anos, foi o motivo do medo generalizado do reino! \n \033[1;35m \n" +
+                        "                                                                   ____________\\n\" \n" +
+                        "                                             (`-..________....---''  ____..._.-`\\n\" \n" +
+                        "                                               \\\\\\\\`._______.._,.---'''     ,'\\n\" \n" +
+                        "                                              ; )`.      __..-'`-.      /\\n\" \n" +
+                        "                                             / /     _.-' _,.;;._ `-._,'\\n\" \n" +
+                        "                                            / /   ,-' _.-'  //   ``--._``._\\n\" \n" +
+                        "                                          ,','_.-' ,-' _.- (( =-    -. `-._`-._____\\n\" \n" +
+                        "                                        ,;.''__..-'   _..--.\\\\\\\\.--'````--.._``-.`-._`.\\n\" \n" +
+                        "                         _          |\\\\,' .-''        ```-'`---'`-...__,._  ``-.`-.`-.`.\\n\" \n" +
+                        "              _     _.-,'(__)\\\\__)\\\\-'' `     ___  .          `     \\\\      `--._\\n\" \n" +
+                        "            ,',)---' X)          `     `      ``-.   `     /     /     `     `-.\\n\" \n" +
+                        "            \\\\_____--.  '`  `               __..-.  \\\\     . (   < _...-----..._   `.\\n\" \n" +
+                        "             \\\\_,--..__. \\\\\\\\ .-`.\\\\----'';``,..-.__ \\\\  \\\\      ,`_. `.,-'`--'`---''`.  )\\n\" \n" +
+                        "                       `.\\\\`.\\\\  `_.-..' ,'   _,-..'  /..,-''(, ,' ; ( _______`___..'__\\n\" \n" +
+                        "                               ((,(,__(    ((,(,__,'  ``'-- `'`.(\\\\  `.,..______   _/\\n\" \n" +
+                        "                                                                  ``--------..._``--.__\\ \033[0m \n");
                 todosVivos = false;
                 // O System.exit(0) diz que o código será encerrado sem mensagem alguma após ser chamado
                 System.exit(0);
@@ -481,8 +491,27 @@ public class MenusController {
 
                 }
             }
-
-            System.out.println("\033[1;93mDeseja sair do jogo?\033[1;97m\n1 - Continuar\n2 - Sair");
+            System.out.println("\033[1;93mDeseja sair do jogo?\033[1;97m\n1 - Continuar\n2 - Sair\n" +
+                    "1- " +
+                    "\n" +
+                    "                 /           /                                               \n" +
+                    "                /' .,,,,  ./                                                 \n" +
+                    "               /';'     ,/                                                   \n" +
+                    "              / /   ,,//,`'`                                                 \n" +
+                    "             ( ,, '_,  ,,,' ``                                               \n" +
+                    "             |    /@  ,,, ;\" `                                               \n" +
+                    "            /    .   ,''/' `,``                                              \n" +
+                    "           /   .     ./, `,, ` ;                                             \n" +
+                    "        ,./  .   ,-,',` ,,/''\\,'                                             \n" +
+                    "       |   /; ./,,'`,,'' |   |                                               \n" +
+                    "       |     /   ','    /    |                                               \n" +
+                    "        \\___/'   '     |     |                                               \n" +
+                    "          `,,'  |      /     `\\                                              \n" +
+                    "Vao correr?   /      |        ~\\                                            \n" +
+                    "    FRACOS!  '       (                                                      \n" +
+                    "             :                                                               \n" +
+                    "            ; .         \\--                                                  \n" +
+                    "          :              \\         ;");
             Scanner atqDef = new Scanner(System.in);
             int escolhaTurno = atqDef.nextInt();
 
@@ -493,6 +522,7 @@ public class MenusController {
             System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mNOVO TURNO\033[1;97m");
 
         } while (todosVivos);
-    }
+
+    } // Fim do método Turno
 
 }
