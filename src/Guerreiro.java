@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Guerreiro extends Personagem {
 
@@ -10,7 +11,9 @@ public class Guerreiro extends Personagem {
     @Override
     public void atacar(Personagem personagem) {
         int dano;
-        System.out.println("atacando");
+        
+        System.out.println("\n\033[4;31mO guerreiro corre na direcao do dragao para ataca-lo.\033[0m\033[1;97m\n\n- - - - - -");
+        
         dano = getAtaque() - personagem.getDefesa();
 
         personagem.setPontosVida(personagem.getPontosVida() - dano);

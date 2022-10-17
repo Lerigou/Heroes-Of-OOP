@@ -2,6 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Random;
 
 public abstract class Personagem{
 
@@ -28,7 +29,15 @@ public abstract class Personagem{
 
     public abstract void atacar(Personagem personagem);
     public void defender(){
-        System.out.println("defendendo");
+        //RANDOMIZAR FALA DE DEFESA
+        final String[] falasDefesa = {"esquiva para longe do dragao."
+        , "faz um rolamento para longe."
+        , "se esconde atras da arvore mais proxima."
+        , "corre do dragao."};
+        Random random = new Random();
+        int falaN = random.nextInt(falasDefesa.length);
+
+        System.out.println("\n\033[4;34mO heroi "+ falasDefesa[falaN]+"\033[0m\033[1;97m\n\n- - - - - -");
         setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
     }
 

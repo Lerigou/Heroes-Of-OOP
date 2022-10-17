@@ -20,7 +20,7 @@ public class MenusController {
     public void home() {
         System.out.println("\033[1;97m\n" +
 
-                "\033[0;33m _____                            ___    _____ _____ _____ \n" +
+                "\033[1;93m _____                            ___    _____ _____ _____ \n" +
                 "|  |  |___ ___ ___ ___ ___    ___|  _|  |     |     |  _  |\n" +
                 "|     | -_|  _| . | -_|_ -|  | . |  _|  |  |  |  |  |   __|\n" +
                 "|__|__|___|_| |___|___|___|  |___|_|    |_____|_____|__|" +
@@ -34,7 +34,7 @@ public class MenusController {
         int escolha = menu1.nextInt();
 
         if (escolha == 1) {
-            System.out.println("\n\n\033[0;33mLAZYFROG E O REINO DE TAO TAO DISTANTE\n"+
+            System.out.println("\n\n\033[1;93mLAZYFROG E O REINO DE TAO TAO DISTANTE\n"+
                                             "--------------------------------------");
             System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante," +
                     " um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas," +
@@ -64,7 +64,7 @@ public class MenusController {
     }
 
     public void escolherNome(Personagem p) {
-        System.out.println("\033[0;33m\nEscolha um nome para o seu heroi: \033[1;97m");
+        System.out.println("\033[1;93m\nEscolha um nome para o seu heroi: \033[1;97m");
         Scanner inputNome = new Scanner(System.in);
         String nome = inputNome.nextLine();
         p.setNome(nome);
@@ -95,8 +95,8 @@ public class MenusController {
         do {
             adicionarPersonagem = true;
 
-            System.out.println("\033[1;97mEscolha um personagem dentre as opções: \n" +
-                    "Personagem 1: Guerreiro | \033[1;31mAtaque: 30\033[1;97m | \033[1;36mDefesa: 20\033[1;97m | \033[1;32mPVD: 180 \n" +
+            System.out.println("\033[1;93mEscolha um personagem dentre as opcoes: \n" +
+                    "\033[1;97mPersonagem 1: Guerreiro | \033[1;31mAtaque: 30\033[1;97m | \033[1;36mDefesa: 20\033[1;97m | \033[1;32mPVD: 180 \n" +
                     "\033[1;97mPersonagem 2: Mago | \033[1;31mAtaque: 20\033[1;97m |  \033[1;36mDefesa 10\033[1;97m | \033[1;32mPVD: 200 \n" +
                     "\033[1;97mPersonagem 3: Arqueiro | \033[1;31mAtaque: 20\033[1;97m | \033[1;36mDefesa: 30\033[1;97m | \033[1;32mPVD: 160\033[1;97m");
 
@@ -212,7 +212,7 @@ public class MenusController {
                 break;
             }
 
-            System.out.println("\033[1;97mDeseja adicionar um novo personagem? \n" +
+            System.out.println("\033[1;93mDeseja adicionar um novo personagem? \n" +
                     "\033[1;32m1- Para adicionar um novo personagem \n" +
                     "\033[1;31m2- Para não adicionar um novo personagem\033[1;97m");
 
@@ -236,7 +236,7 @@ public class MenusController {
         if (p.getClass().getSimpleName() == "Guerreiro") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para espada ou 2 para machado\033[1;97m");
+                System.out.println("\n\033[1;93mEscolha uma das opções de arma: 1 para espada ou 2 para machado\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(10, 15, "Espada");
@@ -314,7 +314,7 @@ public class MenusController {
         } else if (p.getClass().getSimpleName() == "Mago") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para varinha ou 2 para cajado\033[1;97m");
+                System.out.println("\n\033[1;93mEscolha uma das opções de arma: 1 para varinha ou 2 para cajado\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(16, 19, "Varinha");
@@ -369,7 +369,7 @@ public class MenusController {
         } else if (p.getClass().getSimpleName() == "Arqueiro") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para arco longo ou 2 para balestra\033[1;97m");
+                System.out.println("\n\033[1;93mEscolha uma das opções de arma: 1 para arco longo ou 2 para balestra\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(12, 13, "Arco Longo");
@@ -392,7 +392,7 @@ public class MenusController {
                             "             4     @\n" +
                             "             4    .\n" +
                             "             4.\n" +
-                            "            '$$          '");
+                            "            '$$          \n");
                 } else if (armaEscolhida == 2) {
                     arma = new Arma(15, 10, "Balestra");
                     System.out.println("\n" +
@@ -407,7 +407,7 @@ public class MenusController {
                             "    | /\n" +
                             "    |/\n" +
                             "    /\n" +
-                            "   (");
+                            "   (\n");
                 } else {
                     System.out.println("Não existe essa arma");
                     opcaoInvalida = true;
@@ -432,7 +432,9 @@ public class MenusController {
 
     public void turno (ArrayList<Personagem> personagens, Dragao dragao) {
         for (Personagem personagem: personagens){
-            System.out.println("Atacar ou defender?");
+            System.out.println("\nDeseja atacar ou defender?"+
+            "\n\033[1;31m1 - Atacar"+
+            "\n\033[1;36m2 - Defender\033[1;97m");
             Scanner atqDef = new Scanner(System.in);
             int escolhaTurno = atqDef.nextInt();
             boolean escolhaInvalida = true;
@@ -447,6 +449,7 @@ public class MenusController {
                 } else {
                     System.out.println("Escolha inválida!");
                     escolhaInvalida = true;
+                    iniciarJogo();
                 }
             }
 
