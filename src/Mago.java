@@ -12,6 +12,11 @@ public class Mago extends Personagem{
         System.out.println("atacando");
         dano = getAtaque() - personagem.getDefesa();
 
-        personagem.setPontosVida(personagem.getPontosVida() - dano);
+        if (dano > 0){
+            personagem.setPontosVida(personagem.getPontosVida() - dano);
+            System.out.println("dano causado: " + dano + "| vida total do dragao: " + personagem.getPontosVida());
+        } else {
+            System.out.println("Uau! LaxyProg neutralizou o ataque!");
+        }
     }
 }

@@ -18,7 +18,12 @@ public class Dragao extends Personagem{
         System.out.println("dragao atacando");
         dano = getAtaque() - personagem.getDefesa();
 
-        personagem.setPontosVida(personagem.getPontosVida() - dano);
+        if (dano > 0){
+            personagem.setPontosVida(personagem.getPontosVida() - dano);
+            System.out.println("dano causado: " + dano + "| vida total do player: " + personagem.getPontosVida());
+        } else {
+            System.out.println("Uau! Voce neutralizou o ataque! Se livrando de um golpe de " + dano + " Sua vida agora é: " + personagem.getPontosVida());
+        }
     }
 
     public Personagem prepararAtaque(ArrayList<Personagem> personagens){
