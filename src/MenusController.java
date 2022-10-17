@@ -14,9 +14,10 @@ public class MenusController {
 
     public MenusController() {
         personagens = new ArrayList<>();
+        Personagem dragao = new Dragao();
     }
 
-    public void iniciarJogo() {
+    public void home() {
         System.out.println("\033[1;97m\n" +
                 " _____                            ___    _____ _____ _____ \n" +
                 "|  |  |___ ___ ___ ___ ___    ___|  _|  |     |     |  _  |\n" +
@@ -35,6 +36,7 @@ public class MenusController {
             criarPersonagem(personagens);
         } else if (escolha == 2) {
             System.out.println("Ta bom, tchau!");
+            //home();
         }
     }
 
@@ -66,7 +68,6 @@ public class MenusController {
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
         int qtdMax = 3;
-        //personagens.add(new Dragao());
 
         do {
             adicionarPersonagem = true;
@@ -179,20 +180,11 @@ public class MenusController {
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
-                personagens.add(new Dragao());
-                String nomeDragao = "LazyProg";
-                personagens.get(3).setNome(nomeDragao);
                 System.out.println("\033[1;97mLimite de personagens atingido!");
-                
                 adicionarPersonagem = false;
-
-                //iniciarJogo();
-                
-                turno();
+                iniciarJogo();
                 break;
             }
-
-
 
             System.out.println("\033[1;97mDeseja adicionar um novo personagem? \n" +
                     "\033[1;32m1- Para adicionar um novo personagem \n" +
@@ -203,6 +195,7 @@ public class MenusController {
 
             if (criarPersonagem == 2) {
                 adicionarPersonagem = false;
+                iniciarJogo();
             }
 
         } while (adicionarPersonagem == true);
@@ -406,58 +399,32 @@ public class MenusController {
     }
 
     //Fim do metodo Escolher Arma
-    
-    public void turno (){
-        Scanner inputUser = new Scanner(System.in);
-        int qtdTurno = 1;
 
-            System.out.println(personagens.get(0));
-            System.out.println(personagens.get(1));
-            System.out.println(personagens.get(2));
-            System.out.println(personagens.get(3));
-
-
-            System.out.println("Jogador 1: " + personagens.get(0).getNome());
-            System.out.println("Jogador 2: " + personagens.get(1).getNome());
-            System.out.println("Jogador 3: " + personagens.get(2).getNome());
-            System.out.println("Dragão:" + personagens.get(3).getNome());
-        
-        //while (personagens.get(3).getPontosVida() > 0 || personagens.get(0).getPontosVida() > 0
-        //&& personagens.get(1).getPontosVida() > 0
-        //&& personagens.get(2).getPontosVida() > 0)
-
-        // Erro na lógica do calculo de ataque e defesa
-        while (personagens.get(3).getPontosVida() > 0 || personagens.get(0).getPontosVida() > 0){
-            
-            System.out.println("\nTurno " + qtdTurno + "! O primeiro a agir é o: " + personagens.get(0).getNome());
-            System.out.println("Escolha 1 para \033[1;91matacar\033[1;97m, ou 2 para \033[1;96mdefender\033[1;97m");
-            int escolhaUser = inputUser.nextInt();
-
-            if (escolhaUser == 1){
-                int dano = (personagens.get(0).getAtaque() - (int)personagens.get(3).getDefesa());
-                int novoPVD = personagens.get(3).getPontosVida() - dano;
-                personagens.get(3).setPontosVida(novoPVD);
-
-                System.out.println("\033[1;97mVocê atacou o dragão causando um dano de: \033[1;31m" + personagens.get(0).getAtaque() + "\n" +
-                        "\033[1;97mPorém o dragão defendeu! Então o dano total causado foi de: \033[1;91m" + dano + "\n" +
-                        "\033[1;97mA vida atual do dragão é de: \033[1;93m" + personagens.get(3).getPontosVida() + "\n \033[1;97m");
-
-            } else if (escolhaUser == 2){
-                int dano = (personagens.get(3).getAtaque() - (int)personagens.get(0).getDefesa());
-                int novoPVD = personagens.get(0).getPontosVida() - dano;
-                personagens.get(0).setPontosVida(novoPVD);
-
-                System.out.println("\033[1;97mO dragão atacou e causou um dano de : \033[1;31m" + personagens.get(3).getAtaque() + "\n" +
-                        "\033[1;97mPorém o você defendeu! Então o dano total causado foi de: \033[1;31m" + dano + "\n" +
-                        "\033[1;97mA sua vida atual é de: \033[1;93m" + personagens.get(0).getPontosVida() + "\n\033[1;97m");
-            }
-
-            qtdTurno++;
-        }
-
+    public void iniciarJogo() {
+        turno(personagens, new Dragao());
     }
 
-    public void realizarAtaque(ArrayList<Personagem> personagens) {
+    public void turno (ArrayList<Personagem> personagens, Dragao dragao) {
+        for (Personagem personagem: personagens){
+            System.out.println("Atacar ou defender?");
+            Scanner atqDef = new Scanner(System.in);
+            int escolhaTurno = atqDef.nextInt();
+            boolean escolhaInvalida = true;
 
+            while(escolhaInvalida == true) {
+                if (escolhaTurno == 1) {
+                    personagem.atacar(dragao);
+                    escolhaInvalida = false;
+                } else if (escolhaTurno == 2) {
+                    personagem.defender();
+                    escolhaInvalida = false;
+                } else {
+                    System.out.println("Escolha inválida!");
+                    escolhaInvalida = true;
+                }
+            }
+
+        }
+        dragao.ataqueDragao(personagens);
     }
 }

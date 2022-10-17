@@ -6,12 +6,14 @@ public class Arqueiro extends Personagem{
     }
 
     @Override
-    public void atacar() {
-        super.atacar();
+    public void atacar(Dragao dragao) {
+        System.out.println("atacando");
+        setDano(getAtaque() - getDefesa());
+
+        dragao.setPontosVida(dragao.getPontosVida() - (int)getDano());
     }
 
     @Override
     public void defender() {
-        super.defender();
     }
 }

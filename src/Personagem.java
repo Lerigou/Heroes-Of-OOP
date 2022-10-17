@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Personagem{
+public abstract class Personagem{
 
     // ele vai ter as ações dos personagens
     // precisa ter um gamecontroller, que é o q vai ser chamado para iniciar o jogo
@@ -31,9 +31,7 @@ public class Personagem{
         setDefesa(getDefesa() + (getDefesa() * buffDefesa));
     }
 
-    public void atacar(){
-        System.out.println("atacando");
-        setDano(getAtaque() - getDefesa());
+    public abstract void atacar(Dragao dragao);
     }
 
     // Método para escolha do nome, onde um scanner é criado
