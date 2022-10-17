@@ -31,9 +31,9 @@ public class MenusController {
         if (escolha == 1) {
             System.out.println("\n\n\033[1;93mLAZYPROG E O REINO DE TAO TAO DISTANTE\n"+
             "--------------------------------------");
-            System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante,\n" +
+            System.out.println("\n\033[1;97mA nossa historia comeca no reino de Tao Tao Distante,\n" +
                     "um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas,\n" +
-                    "apos um dia de muito calor, despertou o dragão adormecido, LazyProg, que veio diretamente ate o\n" +
+                    "apos um dia de muito calor, despertou o dragao adormecido, LazyProg, que veio diretamente ate o\n" +
                     "reino de Tao Tao Distante. Agora cabe a você, nobre aventureiro, salvar o reino das garras de\n" +
                     "LazyProg e se tornar um heroi.\n");
             System.out.println("\033[1;36m                             -|             |-\n" +
