@@ -15,7 +15,8 @@ public class Mago extends Personagem{
     }
 
     @Override
-    public void defender() {
-        super.defender();
+    public void defender(Dragao dragao) {
+        System.out.println("defendendo");
+        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
     }
 }
