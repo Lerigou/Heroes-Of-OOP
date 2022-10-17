@@ -14,9 +14,10 @@ public class MenusController {
 
     public MenusController() {
         personagens = new ArrayList<>();
+        Personagem dragao = new Dragao();
     }
 
-    public void iniciarJogo() {
+    public void home() {
         System.out.println("\033[1;97m\n" +
 
                 "\033[0;33m _____                            ___    _____ _____ _____ \n" +
@@ -56,6 +57,7 @@ public class MenusController {
             criarPersonagem(personagens);
         } else if (escolha == 2) {
             System.out.println("\nFechando jogo. Volte sempre que desejar uma aventura!");
+
         }
     }
 
@@ -87,7 +89,6 @@ public class MenusController {
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
         int qtdMax = 3;
-        // personagens.add(new Dragao());
 
         do {
             adicionarPersonagem = true;
@@ -201,16 +202,11 @@ public class MenusController {
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
-                personagens.add(new Dragao());
-                String nomeDragao = "LazyProg";
-                personagens.get(3).setNome(nomeDragao);
                 System.out.println("\033[1;97mLimite de personagens atingido!");
 
                 adicionarPersonagem = false;
+                iniciarJogo();
 
-                // iniciarJogo();
-
-                turno();
                 break;
             }
 
@@ -223,6 +219,7 @@ public class MenusController {
 
             if (criarPersonagem == 2) {
                 adicionarPersonagem = false;
+                iniciarJogo();
             }
 
         } while (adicionarPersonagem == true);
@@ -425,57 +422,33 @@ public class MenusController {
                 + '\n');
     }
 
-    // Fim do metodo Escolher Arma
+    //Fim do metodo Escolher Arma
 
-    public void turno() {
-        Scanner inputUser = new Scanner(System.in);
-        int qtdTurno = 1;
-
-        System.out.println(personagens.get(0));
-        System.out.println(personagens.get(1));
-        System.out.println(personagens.get(2));
-        System.out.println(personagens.get(3));
-
-        System.out.println("Jogador 1: " + personagens.get(0).getNome());
-        System.out.println("Jogador 2: " + personagens.get(1).getNome());
-        System.out.println("Jogador 3: " + personagens.get(2).getNome());
-        System.out.println("Dragão:" + personagens.get(3).getNome());
-
-        // while (personagens.get(3).getPontosVida() > 0 ||
-        // personagens.get(0).getPontosVida() > 0
-        // && personagens.get(1).getPontosVida() > 0
-        // && personagens.get(2).getPontosVida() > 0)
-
-        // Erro na lógica do calculo de ataque e defesa
-        while (personagens.get(3).getPontosVida() > 0 || personagens.get(0).getPontosVida() > 0) {
-
-            System.out.println("Turno " + qtdTurno + "! O primeiro a agir é o: " + personagens.get(0).getNome());
-            System.out.println("Escolha 1 para atacar, ou 2 para defender");
-            int escolhaUser = inputUser.nextInt();
-
-            if (escolhaUser == 1) {
-                int dano = (personagens.get(0).getAtaque() - (int) personagens.get(3).getDefesa());
-                personagens.get(3).setPontosVida(dano);
-
-                System.out.println("Vida dragão: " + personagens.get(3).getPontosVida());
-
-                System.out.println("Você atacou!" + personagens.get(0).getAtaque() + " Agora a vida do drãgão é de "
-                        + personagens.get(0).getPontosVida() + " PDV.");
-
-            } else if (escolhaUser == 2) {
-                int danoPersonagem = (personagens.get(3).getAtaque() - (int) personagens.get(0).getDefesa());
-                personagens.get(0).setPontosVida(danoPersonagem);
-
-                System.out.println(
-                        "Você defendeu! Agora a sua vida é de " + personagens.get(0).getPontosVida() + " PDV.");
-            }
-
-            qtdTurno++;
-        }
-
+    public void iniciarJogo() {
+        turno(personagens, new Dragao());
     }
 
-    public void realizarAtaque(ArrayList<Personagem> personagens) {
+    public void turno (ArrayList<Personagem> personagens, Dragao dragao) {
+        for (Personagem personagem: personagens){
+            System.out.println("Atacar ou defender?");
+            Scanner atqDef = new Scanner(System.in);
+            int escolhaTurno = atqDef.nextInt();
+            boolean escolhaInvalida = true;
 
+            while(escolhaInvalida == true) {
+                if (escolhaTurno == 1) {
+                    personagem.atacar(dragao);
+                    escolhaInvalida = false;
+                } else if (escolhaTurno == 2) {
+                    personagem.defender();
+                    escolhaInvalida = false;
+                } else {
+                    System.out.println("Escolha inválida!");
+                    escolhaInvalida = true;
+                }
+            }
+
+        }
+        dragao.ataqueDragao(personagens);
     }
 }
