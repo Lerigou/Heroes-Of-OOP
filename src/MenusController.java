@@ -57,7 +57,9 @@ public class MenusController {
             criarPersonagem(personagens);
         } else if (escolha == 2) {
             System.out.println("\nFechando jogo. Volte sempre que desejar uma aventura!");
-
+        }else{
+            System.out.println("\n\nOpa, acho que voce inseriu alguma coisa errada. Tente novamente\n\n- - - - - - -\n");
+            home();
         }
     }
 
