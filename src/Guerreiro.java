@@ -12,13 +12,13 @@ public class Guerreiro extends Personagem {
     public void atacar(Personagem personagem) {
         int dano;
         
-        System.out.println("\n\033[4;31mO guerreiro corre na direcao do dragao para ataca-lo.\033[0m\033[1;97m\n\n- - - - - -");
+        System.out.println("\n\033[4;31mO guerreiro corre na direcao do dragao para ataca-lo.\033[0m\033[1;97m\n\n- - - - - - - - - - - - - - - - - -");
         
         dano = getAtaque() - personagem.getDefesa();
 
         if (dano > 0){
             personagem.setPontosVida(personagem.getPontosVida() - dano);
-            System.out.println("dano causado: " + dano + "| vida total do dragao: " + personagem.getPontosVida());
+            System.out.println("Dano causado: " + dano + "| Vida total do dragao: " + personagem.getPontosVida()+"\n- - - - - - - - - - - - - - - - - -");
         } else {
             System.out.println("Uau! LaxyProg neutralizou o ataque!");
         }

@@ -30,11 +30,19 @@ public class MenusController {
         if (escolha == 1) {
             System.out.println("\n\n\033[1;93mLAZYPROG E O REINO DE TAO TAO DISTANTE\n"+
                                             "--------------------------------------");
+<<<<<<< HEAD
             System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante,\n" +
                     "um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas,\n" +
                     "apos um dia de muito calor, despertou o dragão adormecido, LazyProg, que veio diretamente ate o\n" +
                     "reino de Tao Tao Distante. Agora cabe a você, nobre aventureiro, salvar o reino das garras de\n" +
                     "LazyProg e se tornar um heroi.\n");
+=======
+            System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante," +
+                    " um lugar calmo e pacato onde todos viviam em paz.\nCerto dia, do meio das montanhas congeladas," +
+                    " apos um dia de muito calor, despertou o dragão adormecido, LazyFrog, que veio diretamente ate o" +
+                    " reino de Tao Tao Distante.\nAgora cabe a você, nobre aventureiro, salvar o reino das garras de" +
+                    " LazyFrog e se tornar um heroi.\n");
+>>>>>>> 8b1b5f72e89b22714ef53d410bdd950a7605be37
             System.out.println("\033[1;36m                             -|             |-\n" +
                     "         -|                  [-_-_-_-_-_-_-_-]                  |-\n" +
                     "         [-_-_-_-_-]          |             |          [-_-_-_-_-]\n" +
@@ -92,9 +100,9 @@ public class MenusController {
             adicionarPersonagem = true;
 
             System.out.println("\033[1;93mEscolha um personagem dentre as opcoes: \n" +
-                    "\033[1;97mPersonagem 1: Guerreiro | \033[1;31mAtaque: 30\033[1;97m | \033[1;36mDefesa: 20\033[1;97m | \033[1;32mPVD: 180 \n" +
-                    "\033[1;97mPersonagem 2: Mago | \033[1;31mAtaque: 20\033[1;97m |  \033[1;36mDefesa 10\033[1;97m | \033[1;32mPVD: 200 \n" +
-                    "\033[1;97mPersonagem 3: Arqueiro | \033[1;31mAtaque: 20\033[1;97m | \033[1;36mDefesa: 30\033[1;97m | \033[1;32mPVD: 160\033[1;97m");
+                    "\033[1;97m1 - Guerreiro | \033[1;31mAtaque: 30\033[1;97m | \033[1;36mDefesa: 20\033[1;97m | \033[1;32mPVD: 180 \n" +
+                    "\033[1;97m2 - Mago | \033[1;31mAtaque: 20\033[1;97m |  \033[1;36mDefesa 10\033[1;97m | \033[1;32mPVD: 200 \n" +
+                    "\033[1;97m3 - Arqueiro | \033[1;31mAtaque: 20\033[1;97m | \033[1;36mDefesa: 30\033[1;97m | \033[1;32mPVD: 160\033[1;97m");
 
             Scanner personagemEscolhido = new Scanner(System.in);
             int escolha = personagemEscolhido.nextInt();
@@ -429,10 +437,11 @@ public class MenusController {
 
     public void turno (ArrayList<Personagem> personagens, Dragao dragao) {
         boolean todosVivos;
+        System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mINICIAR COMBATE\n\033[1;97m");
         do {
             todosVivos = true;
             for (Personagem personagem : personagens) {
-                System.out.println("\nDeseja atacar ou defender?"+
+                System.out.println("Heroi: "+personagem.getNome()+"\nDeseja atacar ou defender?"+
             "\n\033[1;31m1 - Atacar"+
             "\n\033[1;36m2 - Defender\033[1;97m");
                 Scanner atqDef = new Scanner(System.in);
@@ -491,8 +500,7 @@ public class MenusController {
 
                 }
             }
-
-            System.out.println("Deseja sair do jogo? 1 ou 2 \n" +
+            System.out.println("\033[1;93mDeseja sair do jogo?\033[1;97m\n1 - Continuar\n2 - Sair\n" +
                     "1- " +
                     "\n" +
                     "                 /           /                                               \n" +
@@ -512,7 +520,7 @@ public class MenusController {
                     "    FRACOS!  '       (                                                      \n" +
                     "             :                                                               \n" +
                     "            ; .         \\--                                                  \n" +
-                    "          :   \\         ;");
+                    "          :              \\         ;");
             Scanner atqDef = new Scanner(System.in);
             int escolhaTurno = atqDef.nextInt();
 
@@ -520,6 +528,7 @@ public class MenusController {
                 System.out.println("saíram correndo");
                 home();
             }
+            System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mNOVO TURNO\033[1;97m");
 
         } while (todosVivos);
     } // Fim do método Turno
