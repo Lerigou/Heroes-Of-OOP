@@ -30,23 +30,27 @@ public class MenusController {
         int escolha = menu1.nextInt();
 
         if (escolha == 1) {
-            System.out.println("Eba");
+            System.out.println("\nA nossa historia começa no reino de Tao Tãao Distante,"+
+            " um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas,"+
+            " apos um dia de muito calor, despertou o dragão adormecido, LazyFrog, que veio diretamente ate o"+
+            " reino de Tao Tao Distante.\nAgora cabe a você, nobre aventureiro, salvar o reino das garras de"+
+            " LazyFrog e se tornar um heroi.");
             qtdPersonagens = 0;
             criarPersonagem(personagens);
         } else if (escolha == 2) {
-            System.out.println("Ta bom, tchau!");
+            System.out.println("É uma pena. Volte sempre que desejar uma aventura!");
         }
     }
 
     public void escolherNome(Personagem p) {
-        System.out.println("Escolha um nome para o seu personagem: ");
+        System.out.println("Escolha um nome para o seu heroi: ");
         Scanner inputNome = new Scanner(System.in);
         String nome = inputNome.nextLine();
         p.setNome(nome);
 
         //Validação de nome
        if (p.getNome().isEmpty()){
-        System.out.println("Nome inválido. Começe novamente.\n\n-------\n\n");
+        System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
         escolherNome(personagens.get(qtdPersonagens));
        }else{
         //Validação de nome já existente
