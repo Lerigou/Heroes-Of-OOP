@@ -37,7 +37,7 @@ public abstract class Personagem{
         Random random = new Random();
         int falaN = random.nextInt(falasDefesa.length);
 
-        System.out.println("\n\033[4;34mO heroi "+ falasDefesa[falaN]+"\033[0m\033[1;97m\n\n- - - - - -");
+        System.out.println("\n\033[4;34mO heroi "+ falasDefesa[falaN]+"\033[0m\033[1;97m\n\n- - - - - - - - - - - - - - - - - -");
         setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
     }
 
