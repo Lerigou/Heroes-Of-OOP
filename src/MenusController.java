@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MenusController {
@@ -440,7 +441,7 @@ public class MenusController {
                     personagem.atacar(dragao);
                     escolhaInvalida = false;
                 } else if (escolhaTurno == 2) {
-                    personagem.defender();
+                    personagem.defender(personagem, dragao);
                     escolhaInvalida = false;
                 } else {
                     System.out.println("Escolha inválida!");
@@ -449,6 +450,18 @@ public class MenusController {
             }
 
         }
-        dragao.ataqueDragao(personagens);
+        ataqueDragao(personagens, dragao);
+    }
+
+    public void ataqueDragao(ArrayList<Personagem> personagens, Dragao dragao){
+        Random personagemAleatorio = new Random();
+        Personagem p = personagens.get(personagemAleatorio.(personagens.size()));
+
+        System.out.println(p);
+
+        System.out.println(p);
+        dragao.setDano(p.getDefesa() - dragao.getAtaque());
+
+        System.out.println("O dragão atacou " + p.getNome() + " causando um dano de: " + dragao.getDano());
     }
 }

@@ -13,18 +13,15 @@ public class Dragao extends Personagem{
         super(30, 30, 300);
     }
 
-    public void ataqueDragao(ArrayList<Personagem> personagens){
-        Random personagemAleatorio = new Random();
-        Personagem i = personagens.get(personagemAleatorio.nextInt(personagens.size()));
-
-
-    }
-
     @Override
     public void atacar(Dragao dragao) {}
 
     @Override
-    public void defender() {
+    public void defender(Personagem personagens, Dragao dragao) {
+        System.out.println("defendendo");
+        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
+        setPontosVida(getPontosVida() - personagens.getDano());
 
+        System.out.println("A vida de LazyProg totaliza agora em " + getPontosVida() + " de vida!\n");
     }
 }
