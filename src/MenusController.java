@@ -68,13 +68,13 @@ public class MenusController {
 
         // Verificando se o nome é  nulo  ou já existente
         if (p.getNome().isEmpty()) {
-            System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
+            System.out.println("Nome invalido. Tente novamente.\n\n-------\n\n");
             escolherNome(personagens.get(qtdPersonagens));
         } else {
             // Validação de nome já existente
             for (int i = 0; i < qtdPersonagens; ++i) {
                 if (personagens.get(i).getNome().equals(nome)) {
-                    System.out.println("Nome já informado!");
+                    System.out.println("Nome ja informado!");
                     escolherNome(personagens.get(qtdPersonagens));
 
                 } else {
@@ -192,7 +192,7 @@ public class MenusController {
                     personagens.add(new Arqueiro());
                     break;
                 default:
-                    System.out.println("\033[1;97mOpcao indisponível! Por favor, escolha uma das opcoes indicadas");
+                    System.out.println("\033[1;97mOpcao indisponivel! Por favor, escolha uma das opcoes indicadas");
             }
 
             // chama os métodos escolherNome e escolherArma para o personagem do número correspondente ao qtdPersonagens
@@ -447,7 +447,7 @@ public class MenusController {
                         personagem.defender();
                         escolhaInvalida = false;
                     } else {
-                        System.out.println("Escolha inválida!");
+                        System.out.println("Escolha invalida!");
                         escolhaInvalida = true;
 
                     }
@@ -491,32 +491,31 @@ public class MenusController {
 
                 }
             }
-            System.out.println("\033[1;93mDeseja sair do jogo?\033[1;97m\n1 - Continuar\n2 - Sair\n" +
-                    "1- " +
-                    "\n" +
-                    "                 /           /                                               \n" +
-                    "                /' .,,,,  ./                                                 \n" +
-                    "               /';'     ,/                                                   \n" +
-                    "              / /   ,,//,`'`                                                 \n" +
-                    "             ( ,, '_,  ,,,' ``                                               \n" +
-                    "             |    /@  ,,, ;\" `                                               \n" +
-                    "            /    .   ,''/' `,``                                              \n" +
-                    "           /   .     ./, `,, ` ;                                             \n" +
-                    "        ,./  .   ,-,',` ,,/''\\,'                                             \n" +
-                    "       |   /; ./,,'`,,'' |   |                                               \n" +
-                    "       |     /   ','    /    |                                               \n" +
-                    "        \\___/'   '     |     |                                               \n" +
-                    "          `,,'  |      /     `\\                                              \n" +
-                    "Vao correr?   /      |        ~\\                                            \n" +
-                    "    FRACOS!  '       (                                                      \n" +
-                    "             :                                                               \n" +
-                    "            ; .         \\--                                                  \n" +
-                    "          :              \\         ;");
+            System.out.println("\033[1;93mDeseja sair do jogo?\033[1;97m\n1 - Continuar\n2 - Sair\n");
+                    
             Scanner atqDef = new Scanner(System.in);
             int escolhaTurno = atqDef.nextInt();
 
             if (escolhaTurno == 2){
-                System.out.println("saíram correndo");
+                System.out.println("\n" +
+                "                 /           /                                               \n" +
+                "                /' .,,,,  ./                                                 \n" +
+                "               /';'     ,/                                                   \n" +
+                "              / /   ,,//,`'`                                                 \n" +
+                "             ( ,, '_,  ,,,' ``                                               \n" +
+                "             |    /@  ,,, ;\" `                                               \n" +
+                "            /    .   ,''/' `,``                                              \n" +
+                "           /   .     ./, `,, ` ;                                             \n" +
+                "        ,./  .   ,-,',` ,,/''\\,'                                             \n" +
+                "       |   /; ./,,'`,,'' |   |                                               \n" +
+                "       |     /   ','    /    |                                               \n" +
+                "        \\___/'   '     |     |                                               \n" +
+                "          `,,'  |      /     `\\                                              \n" +
+                "Vao correr?   /      |        ~\\                                            \n" +
+                "    FRACOS!  '       (                                                      \n" +
+                "             :                                                               \n" +
+                "            ; .         \\--                                                  \n" +
+                "          :              \\         ;");
                 home();
             }
             System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mNOVO TURNO\033[1;97m");
