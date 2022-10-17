@@ -14,6 +14,8 @@ public class Arqueiro extends Personagem{
     }
 
     @Override
-    public void defender() {
+    public void defender(Dragao dragao) {
+        System.out.println("defendendo");
+        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
     }
 }
