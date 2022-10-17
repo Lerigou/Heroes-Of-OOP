@@ -11,6 +11,7 @@ public class MenusController {
         personagens = new ArrayList<>();
     }
 
+
     public void home() {
         System.out.println("\033[1;97m\n" +
 
@@ -29,20 +30,12 @@ public class MenusController {
 
         if (escolha == 1) {
             System.out.println("\n\n\033[1;93mLAZYPROG E O REINO DE TAO TAO DISTANTE\n"+
-                                            "--------------------------------------");
-<<<<<<< HEAD
+
             System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante,\n" +
                     "um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas,\n" +
                     "apos um dia de muito calor, despertou o dragão adormecido, LazyProg, que veio diretamente ate o\n" +
                     "reino de Tao Tao Distante. Agora cabe a você, nobre aventureiro, salvar o reino das garras de\n" +
                     "LazyProg e se tornar um heroi.\n");
-=======
-            System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante," +
-                    " um lugar calmo e pacato onde todos viviam em paz.\nCerto dia, do meio das montanhas congeladas," +
-                    " apos um dia de muito calor, despertou o dragão adormecido, LazyFrog, que veio diretamente ate o" +
-                    " reino de Tao Tao Distante.\nAgora cabe a você, nobre aventureiro, salvar o reino das garras de" +
-                    " LazyFrog e se tornar um heroi.\n");
->>>>>>> 8b1b5f72e89b22714ef53d410bdd950a7605be37
             System.out.println("\033[1;36m                             -|             |-\n" +
                     "         -|                  [-_-_-_-_-_-_-_-]                  |-\n" +
                     "         [-_-_-_-_-]          |             |          [-_-_-_-_-]\n" +
@@ -73,7 +66,7 @@ public class MenusController {
         String nome = inputNome.nextLine();
         p.setNome(nome);
 
-        // Validação de nome
+        // Verificando se o nome é  nulo  ou já existente
         if (p.getNome().isEmpty()) {
             System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
             escolherNome(personagens.get(qtdPersonagens));
@@ -90,7 +83,7 @@ public class MenusController {
 
             }
         }
-    }
+    } // Fim do método escolherNome
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
         boolean adicionarPersonagem;
@@ -202,16 +195,14 @@ public class MenusController {
                     System.out.println("\033[1;97mOpção indisponível! Por favor, escolha uma das opções indicadas");
             }
 
+            // chama os métodos escolherNome e escolherArma para o personagem do número correspondente ao qtdPersonagens
             escolherNome(personagens.get(qtdPersonagens));
             escolherArma(personagens.get(qtdPersonagens));
             qtdPersonagens += 1;
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
-
-                adicionarPersonagem = false;
                 iniciarJogo();
-
                 break;
             }
 
@@ -531,6 +522,7 @@ public class MenusController {
             System.out.println("\n- - - - - - - - - - - - - - - - - -\n\n\033[1;93mNOVO TURNO\033[1;97m");
 
         } while (todosVivos);
+
     } // Fim do método Turno
 
 }
