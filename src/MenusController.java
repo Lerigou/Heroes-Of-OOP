@@ -19,50 +19,71 @@ public class MenusController {
 
     public void home() {
         System.out.println("\033[1;97m\n" +
-                " _____                            ___    _____ _____ _____ \n" +
+
+                "\033[0;33m _____                            ___    _____ _____ _____ \n" +
                 "|  |  |___ ___ ___ ___ ___    ___|  _|  |     |     |  _  |\n" +
                 "|     | -_|  _| . | -_|_ -|  | . |  _|  |  |  |  |  |   __|\n" +
                 "|__|__|___|_| |___|___|___|  |___|_|    |_____|_____|__|" +
-                "\n");
-        System.out.println("\033[1;97mDeseja iniciar uma nova partida ou sair? \n" +
-                "1- Nova partida\n" +
-                "\033[1;91m2- Sair \033[1;97m");
+                "\n\n" +
+                "- - - - - - - - - Laura, Marcia e Santiago - - - - - - - -\n\n");
+        System.out.println("\033[1;97m- Deseja iniciar uma nova partida ou sair? \n" +
+                "\033[1;32m1 - Nova partida\033\n" +
+                "\033[1;31m2 - Sair \033[1;97m");
+
         Scanner menu1 = new Scanner(System.in);
         int escolha = menu1.nextInt();
 
         if (escolha == 1) {
-            System.out.println("Eba");
+            System.out.println("\n\n\033[0;33mLAZYFROG E O REINO DE TAO TAO DISTANTE\n"+
+                                            "--------------------------------------");
+            System.out.println("\n\033[1;97mA nossa historia começa no reino de Tao Tao Distante," +
+                    " um lugar calmo e pacato onde todos viviam em paz. Certo dia, do meio das montanhas congeladas," +
+                    " apos um dia de muito calor, despertou o dragão adormecido, LazyFrog, que veio diretamente ate o" +
+                    " reino de Tao Tao Distante. Agora cabe a você, nobre aventureiro, salvar o reino das garras de" +
+                    " LazyFrog e se tornar um heroi.\n");
+            System.out.println("\033[1;36m                             -|             |-\n" +
+                    "         -|                  [-_-_-_-_-_-_-_-]                  |-\n" +
+                    "         [-_-_-_-_-]          |             |          [-_-_-_-_-]\n" +
+                    "          | o   o |           [  0   0   0  ]           | o   o |\n" +
+                    "           |     |    -|       |           |       |-    |     |\n" +
+                    "           |     |_-___-___-___-|         |-___-___-___-_|     |\n" +
+                    "           |  o  ]              [    0    ]              [  o  |\n" +
+                    "           |     ]   o   o   o  [ _______ ]  o   o   o   [     | ----__________\n" +
+                    "_____----- |     ]              [ ||||||| ]              [     |\n" +
+                    "           |     ]              [ ||||||| ]              [     |\n" +
+                    "       _-_-|_____]--------------[_|||||||_]--------------[_____|-_-_\n" +
+                    "      ( (__________------------_____________-------------_________) )\033[1;97m\n\n");
             qtdPersonagens = 0;
             criarPersonagem(personagens);
         } else if (escolha == 2) {
-            System.out.println("Ta bom, tchau!");
-            //home();
+            System.out.println("\nFechando jogo. Volte sempre que desejar uma aventura!");
+
         }
     }
 
     public void escolherNome(Personagem p) {
-        System.out.println("Escolha um nome para o seu personagem: ");
+        System.out.println("\033[0;33m\nEscolha um nome para o seu heroi: \033[1;97m");
         Scanner inputNome = new Scanner(System.in);
         String nome = inputNome.nextLine();
         p.setNome(nome);
 
-        //Validação de nome
-       if (p.getNome().isEmpty()){
-        System.out.println("Nome inválido. Começe novamente.\n\n-------\n\n");
-        escolherNome(personagens.get(qtdPersonagens));
-       }else{
-        //Validação de nome já existente
-        for(int i = 0; i < qtdPersonagens; ++i){
-            if(personagens.get(i).getNome().equals(nome)){
-                System.out.println("Nome já informado!");
-                escolherNome(personagens.get(qtdPersonagens));
-                        
-            }else{
-                System.out.println("Seu personagem se chama: " + p.getNome());
+        // Validação de nome
+        if (p.getNome().isEmpty()) {
+            System.out.println("Nome inválido. Tente novamente.\n\n-------\n\n");
+            escolherNome(personagens.get(qtdPersonagens));
+        } else {
+            // Validação de nome já existente
+            for (int i = 0; i < qtdPersonagens; ++i) {
+                if (personagens.get(i).getNome().equals(nome)) {
+                    System.out.println("Nome já informado!");
+                    escolherNome(personagens.get(qtdPersonagens));
+
+                } else {
+                    System.out.println("Seu personagem se chama: " + p.getNome());
+                }
+
             }
-            
         }
-       }
     }
 
     public void criarPersonagem(ArrayList<Personagem> personagens) {
@@ -71,12 +92,11 @@ public class MenusController {
 
         do {
             adicionarPersonagem = true;
-            System.out.println("\033[1;97mPersonagem de número: " + qtdPersonagens + '\n');
 
             System.out.println("\033[1;97mEscolha um personagem dentre as opções: \n" +
-                    "Personagem 1: Guerreiro | Ataque: 30 | Defesa: 20 | PVD: 180 \n" +
-                    "Personagem 2: Mago | Ataque: 20 |  Defesa 10 | PVD: 200 \n" +
-                    "Personagem 3: Arqueiro | Ataque: 20 | Defesa: 30 | PVD: 160");
+                    "Personagem 1: Guerreiro | \033[1;31mAtaque: 30\033[1;97m | \033[1;36mDefesa: 20\033[1;97m | \033[1;32mPVD: 180 \n" +
+                    "\033[1;97mPersonagem 2: Mago | \033[1;31mAtaque: 20\033[1;97m |  \033[1;36mDefesa 10\033[1;97m | \033[1;32mPVD: 200 \n" +
+                    "\033[1;97mPersonagem 3: Arqueiro | \033[1;31mAtaque: 20\033[1;97m | \033[1;36mDefesa: 30\033[1;97m | \033[1;32mPVD: 160\033[1;97m");
 
             Scanner personagemEscolhido = new Scanner(System.in);
             int escolha = personagemEscolhido.nextInt();
@@ -115,9 +135,10 @@ public class MenusController {
                 case 2:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 2: Mago \n" +
-                            "\033[1;91mAtaque: 20 \n" +
-                            "\033[1;96mDefesa: 10 \n" +
-                            "\033[1;92mPVD: 200 \n" +
+
+                            "\033[1;31mAtaque: 20 \n" +
+                            "\033[1;36mDefesa: 10 \n" +
+                            "\033[1;32mPVD: 200 \n" +
                             "\033[1;97m\n " +
                             "                     ____ \n" +
                             "                  .'* *.'\n" +
@@ -147,9 +168,10 @@ public class MenusController {
                 case 3:
                     System.out.println("\033[1;97m\n" +
                             "Você escolheu o personagem 3: Arqueiro \n" +
-                            "\033[1;91mAtaque: 20 \n" +
-                            "\033[1;96mDefesa: 30 \n" +
-                            "\033[1;92mPVD: 160 \n" +
+                            "\033[1;31mAtaque: 20 \n" +
+                            "\033[1;36mDefesa: 30 \n" +
+                            "\033[1;32mPVD: 160 \n" +
+
                             "\033[1;97m\n" +
                             "            /`.                      \n" +
                             "           /   :.                        \n" +
@@ -181,14 +203,16 @@ public class MenusController {
 
             if (qtdPersonagens >= qtdMax) {
                 System.out.println("\033[1;97mLimite de personagens atingido!");
+
                 adicionarPersonagem = false;
                 iniciarJogo();
+
                 break;
             }
 
             System.out.println("\033[1;97mDeseja adicionar um novo personagem? \n" +
                     "\033[1;32m1- Para adicionar um novo personagem \n" +
-                    "\033[1;31m2- Para não adicionar um novo personagem");
+                    "\033[1;31m2- Para não adicionar um novo personagem\033[1;97m");
 
             Scanner novoPersonagem = new Scanner(System.in);
             int criarPersonagem = novoPersonagem.nextInt();
@@ -210,7 +234,7 @@ public class MenusController {
         if (p.getClass().getSimpleName() == "Guerreiro") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\033[1;97mEscolha uma das opções de arma: 1 para espada ou 2 para machado");
+                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para espada ou 2 para machado\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(10, 15, "Espada");
@@ -288,7 +312,7 @@ public class MenusController {
         } else if (p.getClass().getSimpleName() == "Mago") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\033[1;97mEscolha uma das opções de arma: 1 para varinha ou 2 para cajado");
+                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para varinha ou 2 para cajado\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(16, 19, "Varinha");
@@ -343,7 +367,7 @@ public class MenusController {
         } else if (p.getClass().getSimpleName() == "Arqueiro") {
             do {
                 opcaoInvalida = false;
-                System.out.println("\033[1;97mEscolha uma das opções de arma: 1 para arco longo ou 2 para balestra");
+                System.out.println("\n\033[0;33mEscolha uma das opções de arma: 1 para arco longo ou 2 para balestra\033[1;97m");
                 int armaEscolhida = inputArma.nextInt();
                 if (armaEscolhida == 1) {
                     arma = new Arma(12, 13, "Arco Longo");
