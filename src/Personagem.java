@@ -26,7 +26,7 @@ public abstract class Personagem{
         this.pontosVida = pontosVida;
     }
 
-    public abstract void defender(Dragao dragao);
+    public abstract void defender(Personagem personagens, Dragao dragao);
 
     public abstract void atacar(Dragao dragao);
 
