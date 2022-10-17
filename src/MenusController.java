@@ -58,6 +58,8 @@ public class MenusController {
             criarPersonagem(personagens);
         } else if (escolha == 2) {
             System.out.println("\nFechando jogo. Volte sempre que desejar uma aventura!");
+            // O System.exit(0) diz que o código será encerrado sem mensagem alguma após ser chamado
+            System.exit(0);
         }else{
             System.out.println("\n\nOpa, acho que voce inseriu alguma coisa errada. Tente novamente\n\n- - - - - - -\n");
             home();
@@ -439,7 +441,6 @@ public class MenusController {
                 System.out.println("\nDeseja atacar ou defender?"+
             "\n\033[1;31m1 - Atacar"+
             "\n\033[1;36m2 - Defender\033[1;97m");
-            Scanner atqDef = new Scanner(System.in);
                 Scanner atqDef = new Scanner(System.in);
                 int escolhaTurno = atqDef.nextInt();
                 boolean escolhaInvalida = true;
@@ -458,16 +459,6 @@ public class MenusController {
                     }
                 }
             }
-
-            System.out.println("Deseja sair do jogo? 1 ou 2");
-            Scanner atqDef = new Scanner(System.in);
-            int escolhaTurno = atqDef.nextInt();
-
-            if (escolhaTurno == 2){
-                System.out.println("saíram correndo");
-                home();
-            }
-
 
             // Validação que confirma se o dragão está vivo ou não
             if (dragao.getPontosVida() <= 0){
@@ -488,6 +479,15 @@ public class MenusController {
                     personagens.remove(personagem);
 
                 }
+            }
+
+            System.out.println("Deseja sair do jogo? 1 ou 2");
+            Scanner atqDef = new Scanner(System.in);
+            int escolhaTurno = atqDef.nextInt();
+
+            if (escolhaTurno == 2){
+                System.out.println("saíram correndo");
+                home();
             }
 
         } while (todosVivos);
