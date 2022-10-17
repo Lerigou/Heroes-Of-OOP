@@ -31,7 +31,7 @@ public class Dragao extends Personagem {
         // Verifica se o dano for maior que zero, caso seja, ele faz o cálculo do dano, atualizando a nova vida do personagem que tomou dano
         if (dano > 0){
             personagem.setPontosVida(personagem.getPontosVida() - dano);
-            System.out.println("dano causado: " + dano + "| vida total do player: " + personagem.getPontosVida());
+            System.out.println("- - - - - - - - - - - - - - - - - -\nDano causado: " + dano + "| Vida total de " +personagem.getNome()+": " + personagem.getPontosVida()+"\n- - - - - - - - - - - - - - - - - -");
         } else {
             System.out.println("Uau! Voce neutralizou o ataque! Se livrando de um golpe de " + dano + " Sua vida agora é: " + personagem.getPontosVida());
         }
