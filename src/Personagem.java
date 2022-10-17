@@ -13,7 +13,7 @@ public abstract class Personagem{
 
     // public void danoSofrido(int atacar, int defesa){ }
 
-    private int dano;
+
     private int ataque;
     private int defesa;
     private int pontosVida;
@@ -26,20 +26,15 @@ public abstract class Personagem{
         this.pontosVida = pontosVida;
     }
 
-    public abstract void defender(Personagem personagens, Dragao dragao);
+    public abstract void atacar(Personagem personagem);
+    public void defender(){
+        System.out.println("defendendo");
+        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
+    }
 
-    public abstract void atacar(Dragao dragao);
 
     // Método para escolha do nome, onde um scanner é criado
     // Para usar/pegar o que foi inserido no scanner é preciso utilizar o nextLine(), para Strins
-
-    public int getDano() {
-        return ataque;
-    }
-
-    public void setDano(int dano) {
-        this.dano = dano;
-    }
 
     public int getAtaque() {
         return ataque;

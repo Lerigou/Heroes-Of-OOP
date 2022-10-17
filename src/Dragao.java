@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Dragao extends Personagem{
     // Dragão - ataque: 30; defesa: 30; ponto de vida: 300
@@ -14,14 +13,21 @@ public class Dragao extends Personagem{
     }
 
     @Override
-    public void atacar(Dragao dragao) {}
+    public void atacar(Personagem personagem) {
+        int dano;
+        System.out.println("dragao atacando");
+        dano = getAtaque() - personagem.getDefesa();
 
-    @Override
-    public void defender(Personagem personagens, Dragao dragao) {
-        System.out.println("defendendo");
-        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
-        setPontosVida(getPontosVida() - personagens.getDano());
+        personagem.setPontosVida(personagem.getPontosVida() - dano);
+    }
 
-        System.out.println("A vida de LazyProg totaliza agora em " + getPontosVida() + " de vida!\n");
+    public Personagem prepararAtaque(ArrayList<Personagem> personagens){
+        int max = personagens.size() - 1;
+        int min = 0;
+        int range = max - min + 1;
+
+        int posicaoArray = (int)(Math.random() * range);
+        System.out.println("O personagem " + personagens.get(posicaoArray).getNome() + " foi escolhido para tomar pau do dragao");
+        return personagens.get(posicaoArray);
     }
 }

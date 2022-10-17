@@ -6,16 +6,11 @@ public class Arqueiro extends Personagem{
     }
 
     @Override
-    public void atacar(Dragao dragao) {
+    public void atacar(Personagem personagem) {
+        int dano;
         System.out.println("atacando");
-        setDano(getAtaque() - getDefesa());
+        dano = getAtaque() - personagem.getDefesa();
 
-        dragao.setPontosVida(dragao.getPontosVida() - (int)getDano());
-    }
-
-    @Override
-    public void defender(Personagem personagens, Dragao dragao) {
-        System.out.println("defendendo");
-        setDefesa(getDefesa() + (getDefesa() * ((10/100) * getDefesa())));
+        personagem.setPontosVida(personagem.getPontosVida() - dano);
     }
 }
